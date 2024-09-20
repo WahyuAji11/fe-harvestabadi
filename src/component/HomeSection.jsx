@@ -2,7 +2,7 @@
 
 const HomeSection = () => {
     return (
-        <section className="bg-[#60b4fc] flex flex-col md:flex-row items-center justify-center text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full">
+        <section className="bg-[#60b4fc] flex flex-col md:flex-row items-center justify-center text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full" id='home'>
             <div className="flex flex-col items-center text-center md:items-start md:text-left md:w-1/2 w-full max-w-screen-sm px-4 py-6">
                 <h1 className="text-5xl md:text-5xl xl:text-7xl font-bold leading-tight mb-2 md:mb-7">
                     HARVEST<br />ABADI

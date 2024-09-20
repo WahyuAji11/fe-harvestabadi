@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import Switch from "react-switch";
-import MenuOverlay from "../pages/MenuOverlay";
+import MenuOverlay from "./MenuOverlay";
 
 const navLinks = [
-    { title: "Home", path: "/" },
-    { title: "Services", path: "/services" },
-    { title: "Projects", path: "/projects" },
-    { title: "Blog", path: "/blog" },
-    { title: "Contact Us", path: "/contact" },
+    { title: "Home", id: "home" },
+    { title: "Services", id: "services" },
+    { title: "Projects", id: "project" },
+    { title: "Blog", id: "blog" },
+    { title: "Contact Us", id: "contact" },
 ];
 
 const Navbar = () => {
@@ -19,17 +19,21 @@ const Navbar = () => {
 
     const handleToggle = (checked) => {
         setChecked(checked);
-        if (checked) {
-            document.body.classList.add('dark-theme');
-        } else {
-            document.body.classList.remove('dark-theme');
+        document.body.classList.toggle('dark-theme', checked);
+    };
+
+    const handleScrollToSection = (id) => {
+        const section = document.getElementById(id);
+        if (section) {
+            section.scrollIntoView({ behavior: "smooth" });
+            setNavbarOpen(false); // Close the mobile menu after clicking
         }
     };
 
     return (
         <nav className="fixed top-0 left-0 right-0 z-10 bg-[#60b4fc]">
             <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
-                <Link to="/" className="text-2xl md:text-5xl text-white">
+                <Link to="#home" className="text-2xl md:text-5xl text-white">
                     HARVEST<b>ABADI</b>
                 </Link>
                 <div className="mobile-menu block md:hidden">
@@ -44,9 +48,12 @@ const Navbar = () => {
                     <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8">
                         {navLinks.map((link, index) => (
                             <li key={index}>
-                                <Link to={link.path} className="text-white hover:text-yellow-400">
+                                <button 
+                                    onClick={() => handleScrollToSection(link.id)} 
+                                    className="text-white hover:text-yellow-400"
+                                >
                                     {link.title}
-                                </Link>
+                                </button>
                             </li>
                         ))}
                         <Switch

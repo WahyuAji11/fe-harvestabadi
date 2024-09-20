@@ -1,29 +1,29 @@
 import React from 'react';
-import CardProject from '../component/CardProjects';
+import CardProject from './CardProjects';
 
 const ProjectSection = () => {
     const projects = [
         {
             imageSrc: "/img.jpg",
-            alt: "Image description 1"
+            alt: "Image"
         },
         {
             imageSrc: "/img.jpg",
-            alt: "Image description 2"
+            alt: "Image"
         },
         {
             imageSrc: "/img.jpg",
-            alt: "Image description 3"
+            alt: "Image"
         },
         {
             imageSrc: "/img.jpg",
-            alt: "Image description 4"
+            alt: "Image"
         },
     ];
 
     return (
-        <section className="bg-[#b8e4fc] flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full">
-            <div className='flex flex-col items-start justify-start absolute top-24 left-4 md:left-16 lg:left-[300px]'>
+        <section className="bg-[#b8e4fc] flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full" id='project'>
+            <div className='flex flex-col items-start justify-start absolute left-4 mt-16 md:left-16 lg:left-[300px]'>
                 <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 text-black'>
                     Our <br /> Projects
                 </h1>
