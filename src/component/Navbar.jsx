@@ -48,9 +48,9 @@ const Navbar = () => {
     }, []);
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${bgColor}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${bgColor}`}>
             <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
-                <Link to="#home" className="text-2xl md:text-5xl text-white">
+                <Link to="home" className="text-2xl md:text-5xl text-white">
                     HARVEST<b>ABADI</b>
                 </Link>
                 <div className="mobile-menu block md:hidden">

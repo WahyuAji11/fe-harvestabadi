@@ -34,7 +34,7 @@ const BlogSection = () => {
         <section className="bg-[#60b4fc] relative flex flex-col items-center justify-center text-white p-6 sm:px-8 sm:py-12 md:p-8 min-h-screen w-full" id='blog'>
             <div className="bg-[#97DAFF] rounded-full h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[650px] lg:w-[650px] absolute top-[80px] sm:top-[-80px] md:top-[-100px] lg:top-[15px] left-[-180px] sm:left-[-240px] md:left-[-200px] lg:left-[-200px] z-0 min-h-[300px] min-w-[300px] sm:min-h-[400px] sm:min-w-[400px] md:min-h-[500px] md:min-w-[500px] lg:min-h-[650px] lg:min-w-[650px]"></div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 text-center z-20">Our Blog</h1>
-            <div className="space-y-6 w-full z-30">
+            <div className="space-y-6 w-full z-20">
                 {blogPosts.map(post => (
                     <BlogCard key={post.id} {...post} />
                 ))}
