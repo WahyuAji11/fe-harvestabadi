@@ -7,6 +7,7 @@ import ProjectSection from './component/ProjectSection';
 import BlogSection from './component/BlogSection';
 import ContactSection from './component/ContactSection';
 import DesignInspiration from './component/DesignSection';
+import Footer from './component/Footer';
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
         <DesignInspiration />
         <ContactSection />
       </div>
+      <Footer />
       
       {/* <Routes>
         <Route path="/" element={<HomeSection />} />

@@ -31,8 +31,6 @@ const ProjectSection = () => {
                     __
                 </h1>
             </div>
-
-            {/* Container for cards */}
             <div className="flex justify-center items-center overflow-x-auto gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-600 mt-[200px] sm:mt-[250px] md:mt-[300px]">
                 {projects.map((project, index) => (
                     <div key={index} className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-[250px] lg:w-[300px]">
@@ -43,6 +41,7 @@ const ProjectSection = () => {
                     </div>
                 ))}
             </div>
+            <button className="text-black text-xl md:text-2xl lg:text-3xl font-bold mt-8 text-center hover:text-yellow-400 mb-10">Read More</button>
         </section>
     );
 }

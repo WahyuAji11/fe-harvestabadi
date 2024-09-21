@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import Switch from "react-switch";
@@ -16,6 +16,7 @@ const navLinks = [
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [checked, setChecked] = useState(false);
+    const [bgColor, setBgColor] = useState("transparent");
 
     const handleToggle = (checked) => {
         setChecked(checked);
@@ -26,12 +27,28 @@ const Navbar = () => {
         const section = document.getElementById(id);
         if (section) {
             section.scrollIntoView({ behavior: "smooth" });
-            setNavbarOpen(false); // Close the mobile menu after clicking
+            setNavbarOpen(false);
         }
     };
 
+    const handleScroll = () => {
+        const offset = window.scrollY;
+        if (offset > 50) {
+            setBgColor("bg-[#60b4fc]");
+        } else {
+            setBgColor("transparent");
+        }
+    };
+
+    useEffect(() => {
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+        };
+    }, []);
+
     return (
-        <nav className="fixed top-0 left-0 right-0 z-10 bg-[#60b4fc]">
+        <nav className={`fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${bgColor}`}>
             <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
                 <Link to="#home" className="text-2xl md:text-5xl text-white">
                     HARVEST<b>ABADI</b>
@@ -50,7 +67,7 @@ const Navbar = () => {
                             <li key={index}>
                                 <button 
                                     onClick={() => handleScrollToSection(link.id)} 
-                                    className="text-white hover:text-yellow-400"
+                                    className="text-white hover:text-yellow-400 transition-colors duration-300"
                                 >
                                     {link.title}
                                 </button>
