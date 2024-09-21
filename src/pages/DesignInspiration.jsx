@@ -1,6 +1,5 @@
 import React from 'react';
-import DesignCard from './DesignCard';
-import { Link } from 'react-router-dom';
+import DesignCard from '../component/DesignCard';
 
 const DesignInspiration = () => {
     const projects = [
@@ -31,9 +30,6 @@ const DesignInspiration = () => {
                     </div>
                 ))}
             </div>
-            <Link className="text-black text-xl md:text-2xl lg:text-3xl font-bold mt-8 mb-6 text-center hover:text-yellow-400" to='DesignInspiration'>
-                Read More
-            </Link>
         </section>
     );
 }
