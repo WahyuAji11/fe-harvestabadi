@@ -1,5 +1,7 @@
 import React from 'react';
 import CardProject from '../component/CardProjects';
+import { Link } from 'react-router-dom';
+import { FaArrowCircleLeft } from 'react-icons/fa';
 
 const OurProjects = () => {
     const projects = [
@@ -63,6 +65,9 @@ const OurProjects = () => {
                 ))}
             </div>
             <div className="bg-[#97DAFF] rounded-full h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[600px] lg:w-[600px] absolute bottom-[50px] sm:bottom-[-80px] lg:bottom-[-300px] right-[-180px] sm:right-[-200px] lg:right-[-180px] z-0"></div>
+            <Link className="hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10" to='/'>
+                <FaArrowCircleLeft />
+            </Link>
         </section>
     );
 }

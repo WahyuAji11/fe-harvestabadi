@@ -11,6 +11,8 @@ import Footer from './component/Footer';
 import DetailService from './pages/DetailService';
 import OurBlog from './pages/OurBlog';
 import OurProjects from './pages/OurProjects';
+import DesignInspirationMore from './pages/DesignInspiration';
+import BlogPost from './pages/BlogPost';
 
 const App = () => {
   return (
@@ -31,7 +33,8 @@ const App = () => {
           <Route path="/DetailService" element={<DetailService />} />
           <Route path="/OurBlog" element={<OurBlog />} />
           <Route path="/OurProjects" element={<OurProjects />} />
-          <Route path="/DesignInspiration" element={<DesignInspiration />} />
+          <Route path="/DesignInspiration" element={<DesignInspirationMore />} />
+          <Route path="/BlogPost" element={<BlogPost />} />
         </Routes>
       </div>
       <Footer />

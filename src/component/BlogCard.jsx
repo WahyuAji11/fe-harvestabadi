@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const BlogCard = ({ title, content, author, date, imageUrl }) => {
     return (
@@ -16,7 +17,7 @@ const BlogCard = ({ title, content, author, date, imageUrl }) => {
                         <span className="text-sm text-gray-500">{author}</span>
                         <span className="text-sm text-gray-500 ml-4">{date}</span>
                     </div>
-                    <button className="text-blue-500 hover:text-blue-600 text-sm md:text-base">Read More</button>
+                    <Link to='BlogPost' className="text-blue-500 hover:text-blue-900 text-sm md:text-base">Read More</Link>
                 </div>
             </div>
         </div>
