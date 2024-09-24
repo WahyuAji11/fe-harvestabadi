@@ -5,7 +5,7 @@ function ContactSection() {
   const { checked } = useContext(DarkModeContext);
 
   return (
-    <section className={`flex items-center justify-center min-h-screen mt-10 
+    <section className={`flex items-center justify-center min-h-screen pt-10 
       ${checked ? 'bg-gray-800' : 'bg-[#60b4fc]'}`} id='contact'>
       <div className="flex flex-col md:flex-row w-3/4 max-w-6xl overflow-hidden">
         <div className="w-full md:w-2/5 flex justify-center items-center">

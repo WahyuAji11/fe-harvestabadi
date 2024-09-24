@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { DarkModeContext } from './DarkModeContext'; // Pastikan untuk mengimpor konteks
+import { DarkModeContext } from './DarkModeContext';
 
 const ServicesDetailCard = ({ header, name, text }) => {
-    const { checked } = useContext(DarkModeContext); // Ambil status dark mode
+    const { checked } = useContext(DarkModeContext);
 
     return ( 
         <div className="card max-w-sm bg-gray-100 mb-3">

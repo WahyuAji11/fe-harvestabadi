@@ -21,7 +21,7 @@ const App = () => {
     <DarkModeProvider>
       <Router>
         <Navbar />
-        <div className='bg-[#60b4fc] dark:bg-gray-800'>
+        <div>
           <Routes>
             <Route path="/" element={
               <>
