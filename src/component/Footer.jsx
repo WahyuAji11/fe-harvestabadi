@@ -33,7 +33,7 @@ const Footer = () => {
                         <button 
                             key={index} 
                             onClick={() => handleNavClick(link)} 
-                            className={`text-${checked ? 'white' : 'black'} mb-2 sm:mb-0`}
+                            className={`text-${checked ? 'white' : 'black'} hover:text-yellow-400 mb-2 sm:mb-0`}
                         >
                             {link.title}
                         </button>
