@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { DarkModeContext } from './DarkModeContext';
+
 
 const BlogCard = ({ title, content, author, date, imageUrl }) => {
+    const { checked } = useContext(DarkModeContext);
+
     return (
-        <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-7xl mx-auto">
+        <div className={`flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-7xl mx-auto`}>
             <div className="w-full md:w-2/5">
                 <img src={imageUrl} alt={title} className="w-full h-48 md:h-full object-cover" />
             </div>
@@ -17,7 +21,12 @@ const BlogCard = ({ title, content, author, date, imageUrl }) => {
                         <span className="text-sm text-gray-500">{author}</span>
                         <span className="text-sm text-gray-500 ml-4">{date}</span>
                     </div>
-                    <Link to='BlogPost' className="text-blue-500 hover:text-blue-900 text-sm md:text-base">Read More</Link>
+                    <Link 
+                        to='BlogPost' 
+                        className={`text-sm md:text-base ${checked ? 'text-black' : 'text-blue-500'}`}
+                    >
+                        Read More
+                    </Link>
                 </div>
             </div>
         </div>

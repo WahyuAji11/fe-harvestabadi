@@ -16,7 +16,7 @@ const navLinks = [
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [bgColor, setBgColor] = useState("transparent");
-    const { checked, toggleDarkMode } = useContext(DarkModeContext); // Gunakan context
+    const { checked, toggleDarkMode } = useContext(DarkModeContext);
     const location = useLocation();
 
     const handleToggle = (checked) => {
@@ -98,7 +98,12 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <MenuOverlay links={navLinks} navbarOpen={navbarOpen} onClose={() => setNavbarOpen(false)} />
+            <MenuOverlay 
+                links={navLinks} 
+                navbarOpen={navbarOpen} 
+                onClose={() => setNavbarOpen(false)} 
+                handleNavClick={handleNavClick}
+            />
         </nav>
     );
 };
