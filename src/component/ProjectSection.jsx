@@ -67,23 +67,32 @@ const ProjectSection = () => {
     }, []);
 
     const projects = [
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-    ];
+    {
+        slug: "project-1",
+        image: "/img.jpg",
+        link: "/ProjectDesription",
+        content: "This is a brief description of Project 1."
+    },
+    {
+        slug: "project-2",
+        image: "/img.jpg",
+        link: "/project-2",
+        content: "This is a brief description of Project 2."
+    },
+    {
+        slug: "project-3",
+        image: "/img.jpg",
+        link: "/project-3",
+        content: "This is a brief description of Project 3."
+    },
+    {
+        slug: "project-4",
+        image: "/img.jpg",
+        link: "/project-4",
+        content: "This is a brief description of Project 4."
+    },
+];
+
 
     return (
         <section className={`flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full h-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='project'>
@@ -109,11 +118,14 @@ const ProjectSection = () => {
                         className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-[250px] lg:w-[300px] opacity-0 translate-y-10 transition-all duration-700 ease-in-out"
                     >
                         <CardProject
-                            imageSrc={project.imageSrc}
+                            imageSrc={project.image}
                             alt={project.alt}
+                            link={project.link}
+                            content={project.content}
                         />
                     </div>
                 ))}
+
             </div>
             <Link 
                 className={`text-xl md:text-2xl lg:text-3xl font-bold mt-8 mb-6 text-center hover:text-yellow-400 ${checked ? 'text-white' : 'text-black'}`} 

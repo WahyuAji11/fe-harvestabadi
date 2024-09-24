@@ -10,16 +10,28 @@ const DesignInspiration = () => {
 
     const projects = [
         {
+            id: 1,
             imageSrc: "/videos.jpg",
-            alt: "videos"
+            alt: "videos",
+            link: "https://example.com/project1",
+            createdAt: new Date(),
+            updatedAt: new Date()
         },
         {
+            id: 2,
             imageSrc: "/videos.jpg",
-            alt: "videos"
+            alt: "videos",
+            link: "https://example.com/project2",
+            createdAt: new Date(),
+            updatedAt: new Date()
         },
         {
+            id: 3,
             imageSrc: "/videos.jpg",
-            alt: "videos"
+            alt: "videos",
+            link: "https://example.com/project3",
+            createdAt: new Date(),
+            updatedAt: new Date()
         },
     ];
 
@@ -27,12 +39,10 @@ const DesignInspiration = () => {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-
                     if (entry.target === titleRef.current) {
                         entry.target.classList.remove('translate-y-10', 'opacity-0');
                         entry.target.classList.add('translate-y-0', 'opacity-100');
                     }
-
                     const index = cardRefs.current.indexOf(entry.target);
                     if (index !== -1) {
                         setTimeout(() => {
@@ -56,7 +66,6 @@ const DesignInspiration = () => {
         });
 
         return () => {
-            // Cleanup observer
             if (titleRef.current) {
                 observer.unobserve(titleRef.current);
             }
@@ -80,7 +89,7 @@ const DesignInspiration = () => {
             <div className="flex justify-center items-start overflow-x-auto gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-600 mt-32">
                 {projects.map((project, index) => (
                     <div 
-                        key={index} 
+                        key={project.id} 
                         ref={el => cardRefs.current[index] = el} 
                         className={`flex-shrink-0 w-[320px] sm:w-[360px] md:w-[400px] lg:w-[500px] transform translate-y-10 opacity-0 transition-all duration-500`}>
                         <DesignCard

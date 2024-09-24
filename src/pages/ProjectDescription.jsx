@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { DarkModeContext } from '../component/DarkModeContext';
 
-const OurBlog = () => {
+const ProjectDescription = () => {
     const {checked} = useContext(DarkModeContext)
     const blogPosts = [
         {
@@ -94,4 +94,4 @@ const OurBlog = () => {
     );
 };
 
-export default OurBlog;
+export default ProjectDescription;
