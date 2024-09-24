@@ -1,9 +1,9 @@
-"use client";
-import React, { useState, useEffect } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import Switch from "react-switch";
 import MenuOverlay from "./MenuOverlay";
+import { DarkModeContext } from "./DarkModeContext";
 
 const navLinks = [
     { title: "Home", id: "home", path: "/" },
@@ -15,13 +15,12 @@ const navLinks = [
 
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
-    const [checked, setChecked] = useState(false);
     const [bgColor, setBgColor] = useState("transparent");
-    const location = useLocation(); // Mengambil lokasi saat ini
+    const { checked, toggleDarkMode } = useContext(DarkModeContext); // Gunakan context
+    const location = useLocation();
 
     const handleToggle = (checked) => {
-        setChecked(checked);
-        document.body.classList.toggle('dark-theme', checked);
+        toggleDarkMode(checked);
     };
 
     const handleScrollToSection = (id) => {
@@ -34,18 +33,16 @@ const Navbar = () => {
 
     const handleNavClick = (link) => {
         if (location.pathname === "/") {
-            // Jika berada di halaman utama, scroll ke section
             handleScrollToSection(link.id);
         } else {
-            // Jika berada di halaman lain, navigasi ke link
-            window.location.href = link.path; // Atau gunakan <Link>
+            window.location.href = link.path;
         }
     };
 
     const handleScroll = () => {
         const offset = window.scrollY;
         if (offset > 50) {
-            setBgColor("bg-[#60b4fc]");
+            setBgColor(checked ? "bg-gray-800" : "bg-[#60b4fc]");
         } else {
             setBgColor("transparent");
         }
@@ -56,10 +53,10 @@ const Navbar = () => {
         return () => {
             window.removeEventListener("scroll", handleScroll);
         };
-    }, []);
+    }, [checked]);
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${bgColor}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${bgColor} ${checked ? "bg-gray-800" : ""}`}>
             <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
                 <Link to="/" className="text-2xl md:text-5xl text-white">
                     HARVEST<b>ABADI</b>
@@ -77,7 +74,7 @@ const Navbar = () => {
                         {navLinks.map((link, index) => (
                             <li key={index}>
                                 <button 
-                                    onClick={() => handleNavClick(link)} // Menangani klik
+                                    onClick={() => handleNavClick(link)} 
                                     className="text-white hover:text-yellow-400 transition-colors duration-300"
                                 >
                                     {link.title}

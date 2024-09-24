@@ -13,32 +13,37 @@ import OurBlog from './pages/OurBlog';
 import OurProjects from './pages/OurProjects';
 import DesignInspirationMore from './pages/DesignInspiration';
 import BlogPost from './pages/BlogPost';
+import FloatingWhatsApp from './component/FloatingWhatsapp';
+import { DarkModeProvider } from './component/DarkModeContext';
 
 const App = () => {
   return (
-    <Router>
-      <Navbar />
-      <div className='bg-[#60b4fc]'>
-        <Routes>
-          <Route path="/" element={
-            <>
-              <HomeSection />
-              <ServiceSection />
-              <ProjectSection />
-              <BlogSection />
-              <DesignInspiration />
-              <ContactSection />
-            </>
-          } />
-          <Route path="/DetailService" element={<DetailService />} />
-          <Route path="/OurBlog" element={<OurBlog />} />
-          <Route path="/OurProjects" element={<OurProjects />} />
-          <Route path="/DesignInspiration" element={<DesignInspirationMore />} />
-          <Route path="/BlogPost" element={<BlogPost />} />
-        </Routes>
-      </div>
-      <Footer />
-    </Router>
+    <DarkModeProvider>
+      <Router>
+        <Navbar />
+        <div className='bg-[#60b4fc] dark:bg-gray-800'>
+          <Routes>
+            <Route path="/" element={
+              <>
+                <HomeSection />
+                <ServiceSection />
+                <ProjectSection />
+                <BlogSection />
+                <DesignInspiration />
+                <ContactSection />
+              </>
+            } />
+            <Route path="/DetailService" element={<DetailService />} />
+            <Route path="/OurBlog" element={<OurBlog />} />
+            <Route path="/OurProjects" element={<OurProjects />} />
+            <Route path="/DesignInspiration" element={<DesignInspirationMore />} />
+            <Route path="/BlogPost" element={<BlogPost />} />
+          </Routes>
+        </div>
+        <FloatingWhatsApp />
+        <Footer />
+      </Router>
+    </DarkModeProvider>
   );
 };
 
