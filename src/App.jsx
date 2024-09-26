@@ -15,6 +15,7 @@ import FloatingWhatsApp from './component/FloatingWhatsapp';
 import { DarkModeProvider } from './component/DarkModeContext';
 import SingleBlog from './pages/blog/SIngleBlog';
 import DetailServices from './pages/services/DetailService';
+import SingleProject from './pages/project/SingleProject';
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
             <Route path="/our-project" element={<OurProjects />} />
             <Route path="/design-inspiration" element={<DesignInspirationMore />} />
             <Route path="/blog/:slug" element={<SingleBlog/>} />
+            <Route path="/project/:slug" element={<SingleProject/>} />
           </Routes>
         </div>
         <FloatingWhatsApp />

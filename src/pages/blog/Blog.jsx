@@ -17,7 +17,6 @@ const Blog = () => {
             try {
                 const fetchedPosts = await fetchAllPost();
                 setPosts(fetchedPosts);
-                console.log(fetchPosts);
             } catch (error) {
                 setError("Failed to fetch posts.");
                 console.error(error);

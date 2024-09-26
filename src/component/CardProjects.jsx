@@ -8,9 +8,9 @@ const CardProject = ({ project }) => {
 
     return (
         <div className="max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-3">
-            <a href={project.link} className="block">
+            <a href={`/project/${project.slug}`} className="block">
                 <div className="relative" style={{ paddingBottom: '177.78%' }}>
-                    <img src={imageUrl} alt={project.alt} className="absolute inset-0 w-full h-full object-cover rounded-md shadow-lg" />
+                    <img src={imageUrl} alt={project.slug} className="absolute inset-0 w-full h-full object-cover rounded-md shadow-lg" />
                 </div>
                 <h3 className={`mt-6 mb-4 text-lg font-semibold text-center ${checked ? 'text-white' : 'text-gray-800'}`}>
                     {project.content}

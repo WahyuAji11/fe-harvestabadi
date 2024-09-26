@@ -1,50 +1,40 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import CardProject from '../../component/CardProjects';
 import { Link } from 'react-router-dom';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { DarkModeContext } from '../../component/DarkModeContext';
+import { fetchAllProject } from '../../utils/projectService';
 
 const OurProjects = () => {
     const { checked } = useContext(DarkModeContext);
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
 
-    const projects = [
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-        {
-            imageSrc: "/img.jpg",
-            alt: "Image"
-        },
-    ];
+    useEffect(() => {
+        const fetchData = async () => {
+            setLoading(true);
+            try {
+                const fetchedData = await fetchAllProject();
+                setData(fetchedData);
+            } catch (error) {
+                setError("Failed to fetch data.");
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    if (loading) {
+        return <div>Loading Ngab</div>
+    }
+
+    if (error) {
+        return <div>Error Ngab</div>
+    }
 
     return (
         <section className={`flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900' : 'bg-[#b8e4fc]'}`} id='project'>
@@ -58,13 +48,11 @@ const OurProjects = () => {
                 </h1>
             </div>
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 mt-[200px] sm:mt-[250px] md:mt-[300px] z-10">
-                {projects.map((project, index) => (
-                    <div key={index} className="w-[180px] sm:w-[200px] md:w-[250px] lg:w-[300px]">
-                        <CardProject
-                            imageSrc={project.imageSrc}
-                            alt={project.alt}
-                        />
-                    </div>
+                {data.map((project) => (
+                    <CardProject
+                        key={project.slug}
+                        project={project}
+                    />
                 ))}
             </div>
             <div className={`rounded-full h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[600px] lg:w-[600px] absolute bottom-[50px] sm:bottom-[-80px] lg:bottom-[-300px] right-[-180px] sm:right-[-200px] lg:right-[-180px] z-0 ${checked ? 'bg-gray-700' : 'bg-[#97DAFF]'}`}></div>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import BlogCard from './BlogCard';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from './DarkModeContext';
@@ -6,7 +6,6 @@ import { fetchAllPost } from '../utils/postServices';
 
 const BlogSection = () => {
     const { checked } = useContext(DarkModeContext);
-    const cardRefs = useRef([]);
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -29,28 +28,6 @@ const BlogSection = () => {
         fetchPosts();
     }, []);
 
-    useEffect(() => {
-        const observerCards = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('translate-x-0', 'opacity-100');
-                } else {
-                    entry.target.classList.remove('translate-x-0', 'opacity-100');
-                }
-            });
-        }, { threshold: 0.1 });
-
-        cardRefs.current.forEach(card => {
-            if (card) observerCards.observe(card);
-        });
-
-        return () => {
-            cardRefs.current.forEach(card => {
-                if (card) observerCards.unobserve(card);
-            });
-        };
-    }, []);
-
     if (loading) {
         return <div>Loading Ngab</div>;
     }
@@ -65,10 +42,9 @@ const BlogSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10">Our Blog</h1>
             <div className="space-y-6 w-full z-10">
                 {posts.length > 0 ? (
-                    posts.map((post, index) => (
+                    posts.map((post) => (
                         <div
                             key={post.slug}
-                            ref={el => cardRefs.current[index] = el}
                             className="oppacity-0 translate-x-[-20px] transition-all duration-700 ease-in-out"
                         >
                             <BlogCard post={post} />
