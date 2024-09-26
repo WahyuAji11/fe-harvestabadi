@@ -1,75 +1,92 @@
 import React, { useContext } from 'react';
-import BlogCard from '../component/BlogCard';
+import BlogCard from '../../component/BlogCard';
 import { Link } from 'react-router-dom';
 import { FaArrowCircleLeft } from 'react-icons/fa';
-import { DarkModeContext } from '../component/DarkModeContext';
+import { DarkModeContext } from '../../component/DarkModeContext';
 
-const ProjectDescription = () => {
+const OurBlog = () => {
     const {checked} = useContext(DarkModeContext)
     const blogPosts = [
         {
             id: 1,
-            title: 'Lorem ipsum dolor amet',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
+            title: 'Lorem',
+            image: '/img.jpg',
             author: 'John Doe',
-            date: 'Oct 26, 2024',
-            imageUrl: '/img.jpg'
+            slug: 'project-1',
+            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
+            categories: '',
+            created_at: 'Oct 26, 2024',
         },
         {
             id: 2,
-            title: 'Lorem ipsum dolor amet',
+            title: 'Lorem ipsum',
+            image: '/img.jpg',
+            author: 'John Doe',
+            slug: 'project-2',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Jane Doe',
-            date: 'Nov 10, 2024',
-            imageUrl: '/img.jpg'
+            categories: '',
+            created_at: 'Oct 26, 2024',
+            
         },
         {
             id: 3,
-            title: 'Lorem ipsum dolor amet',
+            title: 'Lorem ipsum dolor',
+            image: '/img.jpg',
+            author: 'John Doe',
+            slug: 'project-3',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Alex Smith',
-            date: 'Dec 05, 2024',
-            imageUrl: '/img.jpg'
+            categories: '',
+            created_at: 'Oct 26, 2024',
         },
         {
             id: 4,
             title: 'Lorem ipsum dolor amet',
+            image: '/img.jpg',
+            author: 'John Doe',
+            slug: 'project-4',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Alex Smith',
-            date: 'Dec 05, 2024',
-            imageUrl: '/img.jpg'
+            categories: '',
+            created_at: 'Oct 26, 2024',
         },
         {
             id: 5,
-            title: 'Lorem ipsum dolor amet',
+            title: 'Lorem ipsum dolor amet 1',
+            image: '/img.jpg',
+            author: 'John Doe',
+            slug: 'project-5',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Alex Smith',
-            date: 'Dec 05, 2024',
-            imageUrl: '/img.jpg'
+            categories: '',
+            created_at: 'Oct 26, 2024',
         },
         {
             id: 6,
-            title: 'Lorem ipsum dolor amet',
+            title: 'Lorem ipsum dolor amet 2',
+            image: '/img.jpg',
+            author: 'John Doe',
+            slug: 'project-6',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Alex Smith',
-            date: 'Dec 05, 2024',
-            imageUrl: '/img.jpg'
+            categories: '',
+            created_at: 'Oct 26, 2024',
         },
         {
             id: 7,
-            title: 'Lorem ipsum dolor amet',
+            title: 'Lorem ipsum dolor amet 3',
+            image: '/img.jpg',
+            author: 'John Doe',
+            slug: 'project-7',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Alex Smith',
-            date: 'Dec 05, 2024',
-            imageUrl: '/img.jpg'
+            categories: '',
+            created_at: 'Oct 26, 2024',
         },
         {
             id: 8,
-            title: 'Lorem ipsum dolor amet',
+            title: 'Lorem ipsum dolor amet 4',
+            image: '/img.jpg',
+            author: 'John Doe',
+            slug: 'project-8',
             content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Alex Smith',
-            date: 'Dec 05, 2024',
-            imageUrl: '/img.jpg'
+            categories: '',
+            created_at: 'Oct 26, 2024',
         },
     ];
 
@@ -80,7 +97,7 @@ const ProjectDescription = () => {
             <h1 className={`text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10 ${checked ? 'text-white' : 'text-black'}`}>Our Blog</h1>
             <div className="space-y-6 w-full z-10">
                 {blogPosts.map(post => (
-                    <BlogCard key={post.id} {...post} />
+                    <BlogCard key={post.slug} {...post} />
                 ))}
             </div>
             <div className={`rounded-full h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[600px] lg:w-[600px] absolute bottom-[50px] sm:bottom-[-80px] lg:bottom-[-300px] right-[-180px] sm:right-[-200px] lg:right-[-180px] z-0 ${checked ? 'bg-gray-700' : 'bg-[#97DAFF]'}`}></div>
@@ -94,4 +111,4 @@ const ProjectDescription = () => {
     );
 };
 
-export default ProjectDescription;
+export default OurBlog;

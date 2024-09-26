@@ -70,7 +70,7 @@ const ProjectSection = () => {
     {
         slug: "project-1",
         image: "/img.jpg",
-        link: "/ProjectDesription",
+        link: "/project-1",
         content: "This is a brief description of Project 1."
     },
     {

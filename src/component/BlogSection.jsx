@@ -7,32 +7,7 @@ const BlogSection = () => {
     const { checked } = useContext(DarkModeContext);
     const cardRefs = useRef([]);
 
-    const blogPosts = [
-        {
-            id: 1,
-            title: 'Lorem ipsum dolor amet',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'John Doe',
-            date: 'Oct 26, 2024',
-            imageUrl: '/img.jpg'
-        },
-        {
-            id: 2,
-            title: 'Lorem ipsum dolor amet',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Jane Doe',
-            date: 'Nov 10, 2024',
-            imageUrl: '/img.jpg'
-        },
-        {
-            id: 3,
-            title: 'Lorem ipsum dolor amet',
-            content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla risus risus, mollis ac ligula vel, semper pretium est. Suspendisse potenti. Donec scelerisque blandit nibh, sed interdum dolor suscipit vitae. Quisque posuere risus nisl, id laoreet odio placerat non. Nam a sapien imperdiet ex ullamcorper pretium Maecenas congue cursus sapien, id iaculis nisi. Nulla malesuada tellus ac nibh porttitor, quis suscipit odio ullamcorper..',
-            author: 'Alex Smith',
-            date: 'Dec 05, 2024',
-            imageUrl: '/img.jpg'
-        },
-    ];
+    const blogPosts = 
 
     useEffect(() => {
         const observerCards = new IntersectionObserver((entries) => {

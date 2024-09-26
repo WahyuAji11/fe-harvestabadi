@@ -1,9 +1,9 @@
 "use client";
 import { Link } from "react-router-dom";
-import ServicesDetailCard from "../component/ServiceDetailCard";
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { useContext } from "react";
-import { DarkModeContext } from "../component/DarkModeContext";
+import { DarkModeContext } from "../../component/DarkModeContext";
+import ServicesDetailCard from "../../component/ServiceDetailCard";
 
 const DetailServices = () => {
     const { checked } = useContext(DarkModeContext);

@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
-import BlogCard from '../component/BlogCard';
+import BlogCard from '../../component/BlogCard';
 import { Link } from 'react-router-dom';
 import { FaArrowCircleLeft } from 'react-icons/fa';
-import { DarkModeContext } from '../component/DarkModeContext';
+import { DarkModeContext } from '../../component/DarkModeContext';
 
-const OurBlog = () => {
+const SingleProject = () => {
     const {checked} = useContext(DarkModeContext)
     const blogPosts = [
         {
@@ -94,4 +94,4 @@ const OurBlog = () => {
     );
 };
 
-export default OurBlog;
+export default SingleProject;

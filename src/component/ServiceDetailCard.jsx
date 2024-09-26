@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { DarkModeContext } from './DarkModeContext';
 
+
 const ServicesDetailCard = ({ header, name, text }) => {
     const { checked } = useContext(DarkModeContext);
 

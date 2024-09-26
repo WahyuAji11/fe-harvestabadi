@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import CardProject from '../component/CardProjects';
+import CardProject from '../../component/CardProjects';
 import { Link } from 'react-router-dom';
 import { FaArrowCircleLeft } from 'react-icons/fa';
-import { DarkModeContext } from '../component/DarkModeContext';
+import { DarkModeContext } from '../../component/DarkModeContext';
 
 const OurProjects = () => {
     const { checked } = useContext(DarkModeContext);

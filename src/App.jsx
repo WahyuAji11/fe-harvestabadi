@@ -8,13 +8,13 @@ import BlogSection from './component/BlogSection';
 import ContactSection from './component/ContactSection';
 import DesignInspiration from './component/DesignSection';
 import Footer from './component/Footer';
-import DetailService from './pages/DetailService';
-import OurBlog from './pages/OurBlog';
-import OurProjects from './pages/OurProjects';
+import OurBlog from './pages/blog/Blog';
+import OurProjects from './pages/project/Projects';
 import DesignInspirationMore from './pages/DesignInspiration';
-import BlogPost from './pages/BlogPost';
 import FloatingWhatsApp from './component/FloatingWhatsapp';
 import { DarkModeProvider } from './component/DarkModeContext';
+import SingleBlog from './pages/blog/SIngleBlog';
+import DetailServices from './pages/services/DetailService';
 
 const App = () => {
   return (
@@ -33,11 +33,11 @@ const App = () => {
                 <ContactSection />
               </>
             } />
-            <Route path="/DetailService" element={<DetailService />} />
-            <Route path="/OurBlog" element={<OurBlog />} />
-            <Route path="/OurProjects" element={<OurProjects />} />
-            <Route path="/DesignInspiration" element={<DesignInspirationMore />} />
-            <Route path="/BlogPost" element={<BlogPost />} />
+            <Route path="/detail-service" element={<DetailServices />} />
+            <Route path="/our-blog" element={<OurBlog />} />
+            <Route path="/our-project" element={<OurProjects />} />
+            <Route path="/design-inspiration" element={<DesignInspirationMore />} />
+            <Route path="/blog/:slug" element={<SingleBlog blogPosts={} />} />
           </Routes>
         </div>
         <FloatingWhatsApp />
