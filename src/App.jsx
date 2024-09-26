@@ -8,7 +8,7 @@ import BlogSection from './component/BlogSection';
 import ContactSection from './component/ContactSection';
 import DesignInspiration from './component/DesignSection';
 import Footer from './component/Footer';
-import OurBlog from './pages/blog/Blog';
+import Blog from './pages/blog/Blog';
 import OurProjects from './pages/project/Projects';
 import DesignInspirationMore from './pages/DesignInspiration';
 import FloatingWhatsApp from './component/FloatingWhatsapp';
@@ -34,10 +34,10 @@ const App = () => {
               </>
             } />
             <Route path="/detail-service" element={<DetailServices />} />
-            <Route path="/our-blog" element={<OurBlog />} />
+            <Route path="/our-blog" element={<Blog />} />
             <Route path="/our-project" element={<OurProjects />} />
             <Route path="/design-inspiration" element={<DesignInspirationMore />} />
-            <Route path="/blog/:slug" element={<SingleBlog blogPosts={} />} />
+            <Route path="/blog/:slug" element={<SingleBlog/>} />
           </Routes>
         </div>
         <FloatingWhatsApp />
