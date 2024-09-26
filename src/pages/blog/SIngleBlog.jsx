@@ -19,7 +19,6 @@ const SingleBlog = () => {
 
           try {
             const postResponse = await fetchPostBySlug(slug);
-
             setPost(postResponse);
 
             if (postResponse.data.image) {
@@ -48,21 +47,20 @@ const SingleBlog = () => {
         <>
             <div className={`h-[30vh] md:h-[60vh] max-w-[900px] w-[50%] sm:w-[30%] z-0 absolute right-0 top-0 ${checked ? 'bg-gray-700' : 'bg-[#97DAFF]'}`}></div>
             <section className={`z-10 flex flex-col items-center justify-center p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900 text-white' : 'bg-[#60b4fc] text-white'}`} id='article'>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10">{post.title}</h1>
-                <div className="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-3xl mx-auto z-10">
-                    <img src={`${API_BASE_URL}storage/images/${post.image}`} alt={post.title} className="w-full h-64 object-cover" />
-                    <div className="p-6">
-                        <h3 className="text-black font-bold text-xl mb-2">{post.title}</h3>
-                        <p className="text-gray-800 text-base mb-4">{post.content}</p>
-                        <div className="flex items-center justify-between mt-4">
-                            <div className="flex items-center">
-                                <span className="text-sm text-gray-500">{post.author}</span>
-                                <span className="text-sm text-gray-500 ml-4">{post.created_at}</span>
-                            </div>
-                        </div>
+                <div className={`flex flex-col bg-white shadow-md rounded-lg overflow-hidden w-full max-w-5xl mx-auto p-6 z-10 mt-20`}>
+                    <img 
+                        src={`${API_BASE_URL}storage/images/${post.image}`} 
+                        alt={post.title} 
+                        className="w-full h-auto object-cover mb-6" 
+                    />
+                    <h1 className="text-black font-bold text-4xl mb-4">{post.title}</h1>
+                    <div className="flex items-center mb-4">
+                        <span className="text-sm text-gray-500 font-medium">{post.author}</span>
+                        <span className="text-sm text-gray-500 ml-4">{new Date(post.created_at).toLocaleDateString()}</span>
                     </div>
+                    <p className="text-gray-800 text-base leading-relaxed mb-6">{post.content}</p>
                 </div>
-                <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10 ${checked ? 'text-white' : 'text-black'}`} to='/'>
+                <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10`} to='/'>
                     <FaArrowCircleLeft />
                 </Link>
             </section>
@@ -71,3 +69,4 @@ const SingleBlog = () => {
 };
 
 export default SingleBlog;
+

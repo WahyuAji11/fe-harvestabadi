@@ -9,17 +9,18 @@ const OurProjects = () => {
     const { checked } = useContext(DarkModeContext);
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const fetchData = async () => {
             setLoading(true);
             try {
                 const fetchedData = await fetchAllProject();
+                console.log("Fetched Data:", fetchedData); // Log the fetched data
                 setData(fetchedData);
-            } catch (error) {
-                setError("Failed to fetch data.");
-                console.error(error);
+            } catch (err) {
+                setError("Failed to fetch data: " + err.message); // Include the error message
+                console.error("Error fetching data:", err);
             } finally {
                 setLoading(false);
             }
@@ -29,11 +30,11 @@ const OurProjects = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading Ngab</div>
+        return <div>Loading Ngab</div>;
     }
 
     if (error) {
-        return <div>Error Ngab</div>
+        return <div>{error}</div>; // Display the error message
     }
 
     return (
@@ -48,13 +49,16 @@ const OurProjects = () => {
                 </h1>
             </div>
             <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 mt-[200px] sm:mt-[250px] md:mt-[300px] z-10">
-                {data.map((project) => (
+                {data.map((project, index) => (
                     <CardProject
                         key={project.slug}
                         project={project}
+                        data-aos="fade-up"
+                        data-aos-delay={index * 200}
                     />
                 ))}
             </div>
+
             <div className={`rounded-full h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[600px] lg:w-[600px] absolute bottom-[50px] sm:bottom-[-80px] lg:bottom-[-300px] right-[-180px] sm:right-[-200px] lg:right-[-180px] z-0 ${checked ? 'bg-gray-700' : 'bg-[#97DAFF]'}`}></div>
             <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10 ${checked ? 'text-white' : 'text-black'}`} to='/'>
                 <FaArrowCircleLeft />

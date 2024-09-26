@@ -2,77 +2,37 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import Card from "../component/CardServices";
 import { DarkModeContext } from './DarkModeContext';
+import AOS from 'aos'; // Import AOS
+import 'aos/dist/aos.css'; // Import AOS styles
 
 const ServiceSection = () => {
     const { checked } = useContext(DarkModeContext);
-    const cardRefs = useRef([]); 
+    const cardRefs = useRef([]);
     const titleRef = useRef(null);
-    
-    
 
     const services = [
-        {
-            imageSrc: "/img.jpg",
-            title: "Service 1",
-            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-            link: "/DetailService"
-        },
-        {
-            imageSrc: "/img.jpg",
-            title: "Service 2",
-            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-            link: "/DetailService"
-        },
-        {
-            imageSrc: "/img.jpg",
-            title: "Service 3",
-            text: "Lorem ipsum dolor sit amet consectetur adipisicing elit...",
-            link: "/DetailService"
-        },
+    {
+        imageSrc: "/img.jpg",
+        title: "Web Development",
+        text: "Build modern and responsive websites that cater to your business needs. Our expert team ensures top-notch performance and security.",
+        link: "/DetailService1"
+    },
+    {
+        imageSrc: "/img.jpg",
+        title: "Mobile App Development",
+        text: "Create powerful mobile applications for both Android and iOS platforms. We focus on user experience and functionality to engage your audience.",
+        link: "/DetailService2"
+    },
+    {
+        imageSrc: "/img.jpg",
+        title: "Digital Marketing",
+        text: "Boost your online presence with our digital marketing services, including SEO, PPC, and social media marketing strategies tailored to your business.",
+        link: "/DetailService3"
+    },
     ];
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        const index = cardRefs.current.indexOf(entry.target);
-                        if (index !== -1) {
-                            setTimeout(() => {
-                                entry.target.classList.remove('translate-y-10', 'opacity-0');
-                                entry.target.classList.add('translate-y-0', 'opacity-100');
-                            }, index * 200);
-                        } else if (entry.target === titleRef.current) {
-                            entry.target.classList.remove('-translate-x-10', 'opacity-0');
-                            entry.target.classList.add('translate-x-0', 'opacity-100');
-                        }
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            { threshold: 0.1 }
-        );
-
-        if (titleRef.current) {
-            observer.observe(titleRef.current);
-        }
-
-        cardRefs.current.forEach(card => {
-            if (card) {
-                observer.observe(card);
-            }
-        });
-
-        return () => {
-            cardRefs.current.forEach(card => {
-                if (card) {
-                    observer.unobserve(card);
-                }
-            });
-            if (titleRef.current) {
-                observer.unobserve(titleRef.current);
-            }
-        };
+        AOS.init({ duration: 1000 });
     }, []);
 
     return (
@@ -82,7 +42,9 @@ const ServiceSection = () => {
             <h1 
                 ref={titleRef} 
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10 
-                transform -translate-x-10 opacity-0 transition-all duration-500"
+                opacity-0" 
+                data-aos="fade-right" 
+                data-aos-duration="500"
             >
                 Our Services
             </h1>
@@ -91,7 +53,10 @@ const ServiceSection = () => {
                     <div 
                         key={index} 
                         ref={el => cardRefs.current[index] = el}
-                        className={`flex-shrink-0 w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] transform translate-y-10 opacity-0 transition-all duration-500`}
+                        className={`flex-shrink-0 w-[250px] sm:w-[300px] md:w-[350px] lg:w-[400px] opacity-0`} 
+                        data-aos="fade-up" 
+                        data-aos-duration="500" 
+                        data-aos-delay={index * 200}
                     >
                         <Card
                             imageSrc={service.imageSrc}

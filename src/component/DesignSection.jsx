@@ -40,6 +40,7 @@ const DesignInspiration = () => {
             ${checked ? 'bg-gray-800 text-white' : 'bg-[#b8e4fc] text-black'}`}>
             <h2
                 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-10 pt-4 text-center transform translate-y-10 transition-all duration-500"
+                data-aos="zoom-in-right"
             >
                 Design Inspiration
             </h2>
@@ -48,6 +49,7 @@ const DesignInspiration = () => {
                     <div
                         key={design.id}
                         className="flex-shrink-0 w-[320px] sm:w-[360px] md:w-[400px] lg:w-[500px] transform translate-y-10 transition-all duration-500"
+                        data-aos="flip-left"
                     >
                         <DesignCard
                             design={design}
@@ -56,7 +58,7 @@ const DesignInspiration = () => {
                 ))}
             </div>
             <Link className={`text-xl md:text-2xl lg:text-3xl font-bold mt-8 mb-6 text-center hover:text-yellow-400
-                ${checked ? 'text-white' : 'text-black'}`} to='/design-inspiration'>
+                ${checked ? 'text-white' : 'text-black'}`} to='/design-inspiration' data-aos="fade-up">
                 Read More
             </Link>
         </section>

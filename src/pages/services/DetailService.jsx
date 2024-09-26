@@ -10,20 +10,35 @@ const DetailServices = () => {
 
     const service = [
         {
-            header : "Services",
-            name: "Lorem",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et orci vitae ex tincidunt mattis. Nulla facilisi.",
-        },
-        {
-            header : "Services",
-            name: "Lorem",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et orci vitae ex tincidunt mattis. Nulla facilisi.",
-        },
-        {
-            header : "Services",
-            name: "Lorem",
-            text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed et orci vitae ex tincidunt mattis. Nulla facilisi.",
-        },
+        header: "Web Development",
+        name: "Responsive Website Design",
+        text: "We create stunning responsive websites that adapt to any device. Our designs are user-friendly and tailored to your needs.",
+    },
+    {
+        header: "Mobile Applications",
+        name: "Cross-Platform Apps",
+        text: "Develop high-quality mobile applications that work seamlessly across all devices, ensuring a great user experience.",
+    },
+    {
+        header: "Digital Marketing",
+        name: "SEO Services",
+        text: "Optimize your website with our comprehensive SEO services to improve visibility and drive more traffic to your site.",
+    },
+    {
+        header: "Graphic Design",
+        name: "Brand Identity",
+        text: "Build a strong brand identity with our graphic design services, including logos, brochures, and social media graphics.",
+    },
+    {
+        header: "Content Writing",
+        name: "Engaging Content",
+        text: "Our team of professional writers creates engaging and informative content tailored to your audience and industry.",
+    },
+    {
+        header: "E-Commerce Solutions",
+        name: "Online Store Setup",
+        text: "Launch your online store with our complete e-commerce solutions, including payment integration and inventory management.",
+    },
     ];
 
     return (

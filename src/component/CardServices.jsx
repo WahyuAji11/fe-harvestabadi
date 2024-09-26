@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from './DarkModeContext';
 
-const Card = ({ imageSrc, title, text, link }) => {
+const Card = ({ imageSrc, title, text }) => {
     const { checked } = useContext(DarkModeContext);
 
     return (
@@ -15,7 +15,7 @@ const Card = ({ imageSrc, title, text, link }) => {
                 </div>
                 <div className="px-5 py-3 pb-7">
                     <Link 
-                        to={link} 
+                        to="/detail-service" 
                         className={`font-bold py-2 px-4 rounded transition duration-300 ${checked ? 'bg-gray-600 text-white hover:bg-yellow-400 hover:text-gray-600' : 'bg-[#08c4fc] text-white hover:bg-yellow-400'}`}
                     >
                         More Details

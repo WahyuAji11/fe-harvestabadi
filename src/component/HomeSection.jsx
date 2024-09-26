@@ -10,7 +10,10 @@ const HomeSection = () => {
         <div className={`h-[30vh] md:h-[60vh] max-w-[900px] w-[50%] sm:w-[30%] z-0 absolute right-0 top-0 ${checked ? 'bg-gray-700' : 'bg-[#97DAFF]'}`}></div>
 
         <section className={`z-10 flex flex-col md:flex-row items-center justify-center text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-800' : 'bg-[#60b4fc]'}`} id='home'>
-            <div className="z-10 flex flex-col items-center text-center md:items-start md:text-left md:w-1/2 w-full max-w-screen-sm px-4 py-6 z-2">
+            <div 
+                className="z-10 flex flex-col items-center text-center md:items-start md:text-left md:w-1/2 w-full max-w-screen-sm px-4 py-6 z-2"
+                data-aos="zoom-in-right">
+
                 <h1 className="text-5xl md:text-5xl xl:text-7xl font-bold leading-tight mb-2 md:mb-7">
                     HARVEST<br />ABADI
                 </h1>
@@ -29,6 +32,7 @@ const HomeSection = () => {
                     width={700}
                     height={466}
                     className="rounded-lg object-cover w-full h-auto"
+                    data-aos="zoom-in-left"
                 />
             </div>
         </section>
