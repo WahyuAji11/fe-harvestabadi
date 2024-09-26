@@ -32,12 +32,12 @@ const ProjectSection = () => {
         <section className={`flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full h-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='project'>
             <div className='flex flex-col items-start justify-start absolute left-4 mt-16 md:left-16 lg:left-[300px]' data-aos="fade-right">
                 <h1
-                    className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-5 mb-2 transform -translate-x-5 transition-all duration-700 ease-in-out ${checked ? 'text-white' : 'text-black'}`}
+                    className={`text-3xl mt-9 sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 ${checked ? 'text-white' : 'text-black'}`}
                 >
                     Our <br /> Projects
                 </h1>
                 <h1
-                    className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-[-1rem] sm:mt-[-2rem] md:mt-[-3rem] transform -translate-x-5 transition-all duration-700 ease-in-out ${checked ? 'text-white' : 'text-black'}`}
+                    className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold ${checked ? 'text-white' : 'text-black'} mt-[-1rem] sm:mt-[-2rem] md:mt-[-3rem]`}
                 >
                     __
                 </h1>
