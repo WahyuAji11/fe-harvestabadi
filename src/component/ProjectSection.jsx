@@ -1,13 +1,35 @@
-import React, { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import CardProject from './CardProjects';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from './DarkModeContext';
+import { fetchAllProject } from '../utils/projectService';
 
 const ProjectSection = () => {
     const { checked } = useContext(DarkModeContext);
     const titleRef = useRef(null);
     const lineRef = useRef(null);
     const cardRefs = useRef([]);
+    const [project, setProject] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    useEffect(() => {
+        const fetchProjects = async () => {
+            setLoading(true);
+            try {
+                const fetchedProjects = await fetchAllProject();
+                setProject(fetchedProjects);
+                console.log(fetchedProjects);
+            } catch (error) {
+                setError("Failed to fetch Projects.");
+                console.error(error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchProjects();
+    }, []);
 
     useEffect(() => {
         const observerTitle = new IntersectionObserver(
@@ -66,34 +88,6 @@ const ProjectSection = () => {
         };
     }, []);
 
-    const projects = [
-    {
-        slug: "project-1",
-        image: "/img.jpg",
-        link: "/project-1",
-        content: "This is a brief description of Project 1."
-    },
-    {
-        slug: "project-2",
-        image: "/img.jpg",
-        link: "/project-2",
-        content: "This is a brief description of Project 2."
-    },
-    {
-        slug: "project-3",
-        image: "/img.jpg",
-        link: "/project-3",
-        content: "This is a brief description of Project 3."
-    },
-    {
-        slug: "project-4",
-        image: "/img.jpg",
-        link: "/project-4",
-        content: "This is a brief description of Project 4."
-    },
-];
-
-
     return (
         <section className={`flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full h-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='project'>
             <div className='flex flex-col items-start justify-start absolute left-4 mt-16 md:left-16 lg:left-[300px]'>
@@ -111,21 +105,17 @@ const ProjectSection = () => {
                 </h1>
             </div>
             <div className="flex justify-center items-center overflow-hidden gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 mt-[200px] sm:mt-[250px] md:mt-[300px]">
-                {projects.map((project, index) => (
+                {project.map((project, index) => (
                     <div 
-                        key={index} 
+                        key={project.slug} 
                         ref={el => cardRefs.current[index] = el}
                         className="flex-shrink-0 w-[180px] sm:w-[200px] md:w-[250px] lg:w-[300px] opacity-0 translate-y-10 transition-all duration-700 ease-in-out"
                     >
                         <CardProject
-                            imageSrc={project.image}
-                            alt={project.alt}
-                            link={project.link}
-                            content={project.content}
+                            project={project}
                         />
                     </div>
                 ))}
-
             </div>
             <Link 
                 className={`text-xl md:text-2xl lg:text-3xl font-bold mt-8 mb-6 text-center hover:text-yellow-400 ${checked ? 'text-white' : 'text-black'}`} 

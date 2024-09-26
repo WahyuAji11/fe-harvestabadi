@@ -7,6 +7,8 @@ const ServiceSection = () => {
     const { checked } = useContext(DarkModeContext);
     const cardRefs = useRef([]); 
     const titleRef = useRef(null);
+    
+    
 
     const services = [
         {

@@ -5,24 +5,24 @@ const API_BASE_URL = 'https://api.harvestabadi.com/';
 
 export { API_BASE_URL };
 
-export const fetchPostBySlug = async (slug) => {
+export const fetchProjectBySlug = async (slug) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}api/v1/public/artikels/${slug}`);
+        const response = await axios.get(`${API_BASE_URL}api/v1/public/projects/${slug}`);
         return response.data.data;
     } catch (error) {
         const errorMessage = error.response ? error.response.data.message : error.message;
-        console.error("Error fetching post by slug:", errorMessage);
+        console.error("Error fetching project by slug:", errorMessage);
         throw new Error(errorMessage);
     }
 };
 
-export const fetchAllPost = async () => {
+export const fetchAllProject = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}api/v1/public/artikels/all`);
+        const response = await axios.get(`${API_BASE_URL}api/v1/public/projects/all`);
         return response.data.data;
     } catch (error) {
         const errorMessage = error.response ? error.response.data.message : error.message;
-        console.error("Error fetching all v1/public/artikels:", errorMessage);
+        console.error("Error fetching all v1/public/projects:", errorMessage);
         throw new Error(errorMessage);
     }
 };
