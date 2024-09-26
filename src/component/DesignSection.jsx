@@ -86,7 +86,7 @@ const DesignInspiration = () => {
             >
                 Design Inspiration
             </h2>
-            <div className="flex justify-center items-start overflow-x-auto gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-600 mt-32">
+            <div className="flex justify-center items-start overflow-x-auto overflow-y-hidden gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-600 mt-32">
                 {projects.map((project, index) => (
                     <div 
                         key={project.id} 
@@ -104,6 +104,7 @@ const DesignInspiration = () => {
                 Read More
             </Link>
         </section>
+
     );
 }
 
