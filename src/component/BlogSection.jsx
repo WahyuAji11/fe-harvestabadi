@@ -64,7 +64,7 @@ const BlogSection = () => {
                     <div className="text-center text-xl font-semibold mt-8">No data available</div>
                 )}
             </div>
-            <Link className="text-xl md:text-2xl lg:text-3xl font-bold mt-8 text-center hover:text-yellow-400" to='/our-blog' data-aos="fade-down">
+            <Link className="text-xl md:text-2xl lg:text-3xl font-bold mt-8 text-center hover:text-yellow-400 z-10" to='/our-blog' data-aos="fade-down">
                 Read More
             </Link>
             <div className={`bg-[#97DAFF] rounded-full h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[600px] lg:w-[600px] absolute bottom-[50px] sm:bottom-[-80px] lg:bottom-[-300px] right-[-180px] sm:right-[-200px] lg:right-[-180px] z-0 ${checked ? 'bg-gray-700' : ''}`}></div>
