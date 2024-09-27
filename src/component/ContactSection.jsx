@@ -35,20 +35,36 @@ function ContactSection() {
                 placeholder="Your name"
                 className={`w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 
                   ${checked ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white text-black'}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    window.location.href = 'mailto:mohammadrafly19@gmail.com';
+                  }
+                }}
               />
               <input
                 type="email"
                 placeholder="Your email"
                 className={`w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 
                   ${checked ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white text-black'}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    window.location.href = 'mailto:mohammadrafly19@gmail.com';
+                  }
+                }}
               />
               <textarea
                 placeholder="Your message"
                 className={`w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 
                   ${checked ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white text-black'}`}
                 rows="4"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter') {
+                    window.location.href = 'mailto:mohammadrafly19@gmail.com';
+                  }
+                }}
               ></textarea>
             </div>
+
           </div>
         </div>
       </div>
