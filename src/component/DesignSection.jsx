@@ -28,7 +28,11 @@ const DesignInspiration = () => {
     }, []);
 
     if (loading) {
-        return <p>Loading...</p>;
+        return (
+            <div style={styles.loaderContainer}>
+                <div style={styles.spinner}></div>
+            </div>
+        );
     }
 
     if (error) {
@@ -63,6 +67,24 @@ const DesignInspiration = () => {
             </Link>
         </section>
     );
+};
+
+// Styles for the loader
+const styles = {
+    loaderContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+    },
+    spinner: {
+        border: '8px solid #f3f3f3',
+        borderTop: '8px solid #3498db',
+        borderRadius: '50%',
+        width: '60px',
+        height: '60px',
+        animation: 'spin 1s linear infinite',
+    },
 };
 
 export default DesignInspiration;

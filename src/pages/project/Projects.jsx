@@ -16,10 +16,10 @@ const OurProjects = () => {
             setLoading(true);
             try {
                 const fetchedData = await fetchAllProject();
-                console.log("Fetched Data:", fetchedData); // Log the fetched data
+                console.log("Fetched Data:", fetchedData);
                 setData(fetchedData);
             } catch (err) {
-                setError("Failed to fetch data: " + err.message); // Include the error message
+                setError("Failed to fetch data: " + err.message);
                 console.error("Error fetching data:", err);
             } finally {
                 setLoading(false);
@@ -30,7 +30,11 @@ const OurProjects = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading Ngab</div>;
+        return (
+            <div style={styles.loaderContainer}>
+                <div style={styles.spinner}></div>
+            </div>
+        );
     }
 
     if (error) {
@@ -65,6 +69,24 @@ const OurProjects = () => {
             </Link>
         </section>
     );
-}
+};
+
+// Styles for the loader
+const styles = {
+    loaderContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+    },
+    spinner: {
+        border: '8px solid #f3f3f3',
+        borderTop: '8px solid #3498db',
+        borderRadius: '50%',
+        width: '60px',
+        height: '60px',
+        animation: 'spin 1s linear infinite',
+    },
+};
 
 export default OurProjects;
