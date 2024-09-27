@@ -25,12 +25,12 @@ const ProjectSection = () => {
 
     // Initialize AOS
     useEffect(() => {
-        AOS.init({ duration: 1000 }); // You can adjust the duration
+        AOS.init({ duration: 1000 });
     }, []);
 
     return (
         <section className={`flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full h-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='project'>
-            <div className='flex flex-col items-start justify-start absolute left-4 mt-16 md:left-16 lg:left-[300px]' data-aos="fade-right">
+            <div className='flex flex-col items-start justify-start absolute left-4 mt-12 md:left-16 lg:left-[300px]' data-aos="fade-right">
                 <h1
                     className={`text-3xl mt-9 sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 ${checked ? 'text-white' : 'text-black'}`}
                 >
@@ -47,8 +47,8 @@ const ProjectSection = () => {
                     <div
                         key={data.slug}
                         className="opacity-0 translate-x-[-20px] transition-all duration-700 ease-in-out"
-                        data-aos="fade-up" // Add AOS data attribute for animation
-                        data-aos-delay={index * 200} // Stagger delay based on index
+                        data-aos="fade-up"
+                        data-aos-delay={index * 200}
                     >
                         <CardProject project={data} />
                     </div>

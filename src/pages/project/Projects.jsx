@@ -34,7 +34,7 @@ const OurProjects = () => {
     }
 
     if (error) {
-        return <div>{error}</div>; // Display the error message
+        return <div>{error}</div>;
     }
 
     return (
