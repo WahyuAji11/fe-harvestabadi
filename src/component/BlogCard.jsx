@@ -2,10 +2,12 @@ import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from './DarkModeContext';
 import { API_BASE_URL } from '../utils/postServices';
+import moment from 'moment';
 
 const BlogCard = ({post}) => {
     const { checked } = useContext(DarkModeContext);
     const imageUrl = `${API_BASE_URL}storage/images/${post.image}`;
+    const formattedDate = moment(post.created_at).format('MMM, DD YYYY');
 
     return (
         <div className={`flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-7xl mx-auto`}>
@@ -19,8 +21,8 @@ const BlogCard = ({post}) => {
                 </div>
                 <div className="flex items-center justify-between mt-3">
                     <div className="flex items-center">
-                        <span className="text-sm text-gray-500">{post.author}</span>
-                        <span className="text-sm text-gray-500 ml-4">{post.created_at}</span>
+                        <span className="text-sm text-gray-500">{post.author.name}</span>
+                        <span className="text-sm text-gray-500 ml-4">{formattedDate}</span> </div> <div>
                     </div>
                     <Link
                         to={`/blog/${post.slug}`}
