@@ -1,6 +1,6 @@
 "use client";
 import React, { useContext } from 'react';
-import { DarkModeContext } from './DarkModeContext';
+import { DarkModeContext } from '../component/DarkModeContext';
 
 const HomeSection = () => {
     const { checked } = useContext(DarkModeContext);

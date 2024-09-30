@@ -1,9 +1,9 @@
 "use client";
 import React, { useContext, useEffect, useRef } from 'react';
-import Card from "../component/CardServices";
-import { DarkModeContext } from './DarkModeContext';
-import AOS from 'aos'; // Import AOS
-import 'aos/dist/aos.css'; // Import AOS styles
+import Card from "../../component/CardServices";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+import { DarkModeContext } from '../../component/DarkModeContext';
 
 const ServiceSection = () => {
     const { checked } = useContext(DarkModeContext);

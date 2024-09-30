@@ -36,7 +36,17 @@ const Blog = () => {
     };
 
     if (loading) {
-        return <div className="text-center">Loading...</div>;
+        return(
+            <div style={{
+                ...styles.loaderContainer,
+                backgroundColor: checked ? '#1F2938' : '#60b4fc'
+            }}>
+                <div style={{
+                    ...styles.spinner,
+                    borderTopColor: checked ? '#FBBF24' : '#FBBF24'
+                }}></div>
+            </div>
+        )
     }
 
     if (error) {
@@ -68,5 +78,23 @@ const Blog = () => {
         </section>
     );
 };
+
+// Styles for the loader
+const styles = {
+    loaderContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh'
+    },
+    spinner: {
+        border: '8px solid #f3f3f3',
+        borderTop: '8px solid #3498db',
+        borderRadius: '50%',
+        width: '60px',
+        height: '60px',
+        animation:'spin 1s linear infinite'
+    }
+}
 
 export default Blog;

@@ -12,35 +12,52 @@ const SingleBlog = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-          if (!slug) {
-            setLoading(false);
-            return;
-          }
-
-          try {
-            const postResponse = await fetchPostBySlug(slug);
-            setPost(postResponse);
-
-            if (postResponse.data.image) {
-              const img = new Image();
-              img.src = `${API_BASE_URL}storage/images/${postResponse.image}`;
+            if (!slug) {
+                setLoading(false);
+                return;
             }
-          } catch (err) {
-            console.log(err);
-          } finally {
-            setLoading(false);
-          }
+
+            try {
+                const postResponse = await fetchPostBySlug(slug);
+                setPost(postResponse);
+
+                if (postResponse.data.image) {
+                const img = new Image();
+                img.src = `${API_BASE_URL}storage/images/${postResponse.image}`;
+                }
+            } catch (err) {
+                console.log(err);
+            } finally {
+                setLoading(false);
+            }
         };
 
         fetchData();
     }, [slug]);
 
     if (!post) {
-        return <div>Post not found!</div>;
+        return (
+            <section className={`z-10 flex flex-col items-center justify-center p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900 text-white' : 'bg-[#60b4fc] text-white'}`} id='article'>
+                <h1 className='z-10 lg:text-8xl text-3xl'>Post not found !</h1>
+                <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10`} to='/'>
+                    <FaArrowCircleLeft />
+                </Link>
+            </section>
+        )
     }
 
     if (loading) {
-        return <div>Loading..</div>
+        return (
+            <div style={{
+                ...styles.loaderContainer,
+                backgroundColor: checked ? '#1F2937' : '#97DAFF',
+            }}>
+                <div style={{
+                    ...styles.spinner,
+                    borderColor: checked ? 'FBBF24' : '#60B4FC'
+                }}></div>
+            </div>
+        )
     }
 
     return (
@@ -67,5 +84,22 @@ const SingleBlog = () => {
         </>
     );
 };
+
+const styles = {
+    loaderContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh'
+    },
+    spinner: {
+        border: '8px solid #f3f3f3',
+        borderTop: '8px solid #3498db',
+        borderRadius: '50%',
+        width: '60px',
+        height: '60px',
+        animation:'spin 1s linear infinite'
+    }
+}
 
 export default SingleBlog;

@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react';
-import DesignCard from './DesignCard';
+import DesignCard from '../../component/DesignCard';
 import { Link } from 'react-router-dom';
-import { DarkModeContext } from './DarkModeContext';
-import { fetchAllDesigns } from '../utils/designServices';
+import { DarkModeContext } from '../../component/DarkModeContext';
+import { fetchAllDesigns } from '../../utils/designServices';
 
-const DesignInspiration = () => {
+const DesignSection = () => {
     const { checked } = useContext(DarkModeContext);
     const [designs, setDesigns] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -28,11 +28,17 @@ const DesignInspiration = () => {
     }, []);
 
     if (loading) {
-        return (
-            <div style={styles.loaderContainer}>
-                <div style={styles.spinner}></div>
+        return(
+            <div style={{
+                ...styles.loaderContainer,
+                backgroundColor: checked ? '#1F2938' : '#60b4fc'
+            }}>
+                <div style={{
+                    ...styles.spinner,
+                    borderTopColor: checked ? '#FBBF24' : '#FBBF24'
+                }}></div>
             </div>
-        );
+        )
     }
 
     if (error) {
@@ -43,16 +49,16 @@ const DesignInspiration = () => {
         <section className={`flex flex-col p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full
             ${checked ? 'bg-gray-800 text-white' : 'bg-[#b8e4fc] text-black'}`}>
             <h2
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mt-10 pt-4 text-center transform translate-y-10 transition-all duration-500"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mt-10 pt-4 text-center"
                 data-aos="zoom-in-right"
             >
                 Design Inspiration
             </h2>
-            <div className="flex justify-center items-start overflow-x-auto overflow-y-hidden gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-600 mt-32">
+            <div className="flex justify-start sm:justify-center items-start overflow-x-auto overflow-y-hidden gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-600 mt-32">
                 {designs.map((design) => (
                     <div
                         key={design.id}
-                        className="flex-shrink-0 w-[320px] sm:w-[360px] md:w-[400px] lg:w-[500px] transform translate-y-10 transition-all duration-500"
+                        className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] lg:w-[500px]"
                         data-aos="flip-left"
                     >
                         <DesignCard
@@ -79,7 +85,7 @@ const styles = {
     },
     spinner: {
         border: '8px solid #f3f3f3',
-        borderTop: '8px solid #3498db',
+        borderTop: '8px solid transparent', 
         borderRadius: '50%',
         width: '60px',
         height: '60px',
@@ -87,4 +93,4 @@ const styles = {
     },
 };
 
-export default DesignInspiration;
+export default DesignSection;

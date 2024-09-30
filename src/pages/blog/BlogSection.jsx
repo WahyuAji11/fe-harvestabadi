@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from 'react';
-import BlogCard from './BlogCard';
+import BlogCard from '../../component/BlogCard';
 import { Link } from 'react-router-dom';
-import { DarkModeContext } from './DarkModeContext';
-import { fetchAllPost } from '../utils/postServices';
+import { DarkModeContext } from '../../component/DarkModeContext';
+import { fetchAllPost } from '../../utils/postServices';
+import { FaArrowCircleLeft } from 'react-icons/fa';
 
 const BlogSection = () => {
     const { checked } = useContext(DarkModeContext);
@@ -36,11 +37,28 @@ const BlogSection = () => {
     };
 
     if (loading) {
-        return <div>Loading Ngab</div>;
+        return(
+            <div style={{
+                ...styles.loaderContainer,
+                backgroundColor: checked ? '#1F2938' : '#60b4fc'
+            }}>
+                <div style={{
+                    ...styles.spinner,
+                    borderTopColor: checked ? '#FBBF24' : '#FBBF24'
+                }}></div>
+            </div>
+        )
     }
 
     if (error) {
-        return <div>Error Ngab</div>;
+        return (
+            <section className={`z-10 flex flex-col items-center justify-center p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900 text-white' : 'bg-[#60b4fc] text-white'}`} id='article'>
+                <h1 className='z-10 lg:text-8xl text-3xl'>Post not found !</h1>
+                <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10`} to='/'>
+                    <FaArrowCircleLeft />
+                </Link>
+            </section>
+        )
     }
 
     return (
@@ -71,5 +89,23 @@ const BlogSection = () => {
         </section>
     );
 };
+
+// Styles for the loader
+const styles = {
+    loaderContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh'
+    },
+    spinner: {
+        border: '8px solid #f3f3f3',
+        borderTop: '8px solid #3498db',
+        borderRadius: '50%',
+        width: '60px',
+        height: '60px',
+        animation:'spin 1s linear infinite'
+    }
+}
 
 export default BlogSection;

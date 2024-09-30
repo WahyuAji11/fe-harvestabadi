@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { DarkModeContext } from './DarkModeContext';
 import { API_BASE_URL } from '../utils/projectService';
 
-const CardProject = ({ project }) => {
+const CardProjects = ({ project }) => {
     const { checked } = useContext(DarkModeContext);
     const imageUrl = `${API_BASE_URL}storage/images/${project.image}`;
 
@@ -26,4 +26,4 @@ const CardProject = ({ project }) => {
     );
 };
 
-export default CardProject;
+export default CardProjects;
