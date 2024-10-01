@@ -51,7 +51,7 @@ function ContactSection() {
               <button
                 className={`w-full p-4 text-lg font-bold rounded-xl 
                   ${checked ? 'bg-blue-900 text-white' : 'bg-blue-500 text-white'} ${checked ? 'hover:bg-blue-950' : 'hover:bg-blue-700'}`}
-                onClick={() => window.location.href = 'mailto:mohammadrafly19@gmail.com'}
+                onClick={() => window.location.href = 'mailto:arsayadimas@gmail.com'}
               >
                 Submit
               </button>

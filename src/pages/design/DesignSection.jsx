@@ -3,12 +3,14 @@ import DesignCard from '../../component/DesignCard';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../component/DarkModeContext';
 import { fetchAllDesigns } from '../../utils/designServices';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const DesignSection = () => {
     const { checked } = useContext(DarkModeContext);
     const [designs, setDesigns] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(null);
 
     useEffect(() => {
         const fetchDesigns = async () => {
@@ -27,8 +29,12 @@ const DesignSection = () => {
         fetchDesigns();
     }, []);
 
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
+
     if (loading) {
-        return(
+        return (
             <div style={{
                 ...styles.loaderContainer,
                 backgroundColor: checked ? '#1F2938' : '#60b4fc'
@@ -38,11 +44,11 @@ const DesignSection = () => {
                     borderTopColor: checked ? '#FBBF24' : '#FBBF24'
                 }}></div>
             </div>
-        )
+        );
     }
 
     if (error) {
-        return <p>{error}</p>;
+        return <div className="text-center text-red-500">{error}</div>;
     }
 
     return (
@@ -54,19 +60,37 @@ const DesignSection = () => {
             >
                 Design Inspiration
             </h2>
-            <div className="flex justify-start sm:justify-center items-start overflow-x-auto overflow-y-hidden gap-4 sm:gap-6 md:gap-8 lg:gap-10 pb-4 scrollbar-thin scrollbar-track-gray-200 scrollbar-thumb-gray-600 mt-32">
-                {designs.map((design) => (
-                    <div
-                        key={design.id}
-                        className="flex-shrink-0 w-[280px] sm:w-[320px] md:w-[400px] lg:w-[500px]"
-                        data-aos="flip-left"
-                    >
-                        <DesignCard
-                            design={design}
-                        />
-                    </div>
-                ))}
+            
+            <div className="flex md:hidden justify-start pl-4 overflow-x-scroll snap-x snap-mandatory scrollbar-none pb-4 mt-[200px]">
+                <div className="flex space-x-6 w-full">
+                    {designs.map((design, index) => (
+                        <div
+                            key={design.id}
+                            className="min-w-[90%] snap-center flex justify-center transform transition-transform duration-700 ease-in-out"
+                            data-aos="fade-up"
+                            data-aos-delay={index * 200}
+                        >
+                            <DesignCard design={design} />
+                        </div>
+                    ))}
+                </div>
             </div>
+
+            <div className="hidden md:flex justify-start md:justify-center items-center overflow-x-auto pb-4 mt-[200px] scrollbar scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+                <div className="flex space-x-6">
+                    {designs.map((design, index) => (
+                        <div
+                            key={design.id}
+                            className="min-w-[250px] sm:min-w-[300px] md:min-w-[350px] opacity-0 translate-x-[-20px] transition-all duration-700 ease-in-out"
+                            data-aos="fade-up"
+                            data-aos-delay={index * 200}
+                        >
+                            <DesignCard design={design} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
             <Link className={`text-xl md:text-2xl lg:text-3xl font-bold mt-8 mb-6 text-center hover:text-yellow-400
                 ${checked ? 'text-white' : 'text-black'}`} to='/design-inspiration' data-aos="fade-up">
                 Read More
@@ -85,7 +109,7 @@ const styles = {
     },
     spinner: {
         border: '8px solid #f3f3f3',
-        borderTop: '8px solid transparent', 
+        borderTop: '8px solid transparent',
         borderRadius: '50%',
         width: '60px',
         height: '60px',

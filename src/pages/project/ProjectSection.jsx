@@ -65,12 +65,28 @@ const ProjectSection = () => {
                 </h1>
             </div>
 
-            <div className="flex justify-start md:justify-center items-center overflow-x-auto md:overflow-visible pb-4 mt-[200px] sm:mt-[250px] md:mt-[300px] scrollbar scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100 md:scrollbar-hidden">
-                <div className="flex"> 
+
+            <div className="flex md:hidden justify-start pl-4 overflow-x-scroll snap-x snap-mandatory scrollbar-none pb-4 mt-[200px] sm:mt-[250px] md:mt-[300px]">
+                <div className="flex space-x-12 w-full"> 
                     {projects.map((data, index) => (
                         <div
                             key={data.slug}
-                            className="min-w-[250px] sm:min-w-[300px] md:min-w-[350px] opacity-0 translate-x-[-20px] transition-all duration-700 ease-in-out mr-11" right
+                            className="min-w-[90%] snap-center flex justify-center transform transition-transform duration-700 ease-in-out"
+                            data-aos="fade-up"
+                            data-aos-delay={index * 200}
+                        >
+                            <CardProjects project={data} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div className="hidden md:flex justify-start md:justify-center items-center overflow-x-auto pb-4 mt-[200px] sm:mt-[250px] md:mt-[300px] scrollbar scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+                <div className="flex">
+                    {projects.map((data, index) => (
+                        <div
+                            key={data.slug}
+                            className="min-w-[250px] sm:min-w-[300px] md:min-w-[350px] opacity-0 translate-x-[-20px] transition-all duration-700 ease-in-out mr-11"
                             data-aos="fade-up"
                             data-aos-delay={index * 200}
                         >
