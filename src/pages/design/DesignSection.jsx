@@ -5,6 +5,8 @@ import { DarkModeContext } from '../../component/DarkModeContext';
 import { fetchAllDesigns } from '../../utils/designServices';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css'; // Pastikan untuk mengimpor stylesheet Swiper
 
 const DesignSection = () => {
     const { checked } = useContext(DarkModeContext);
@@ -60,22 +62,29 @@ const DesignSection = () => {
             >
                 Design Inspiration
             </h2>
-            
-            <div className="flex md:hidden justify-start pl-4 overflow-x-scroll snap-x snap-mandatory scrollbar-none pb-4 mt-[200px]">
-                <div className="flex space-x-6 w-full">
-                    {designs.map((design, index) => (
-                        <div
-                            key={design.id}
-                            className="min-w-[90%] snap-center flex justify-center transform transition-transform duration-700 ease-in-out"
-                            data-aos="fade-up"
-                            data-aos-delay={index * 200}
-                        >
+
+            {/* Mobile Independent Swipe Section with Swiper */}
+            <div className="md:hidden mt-[200px]">
+                <Swiper
+                    spaceBetween={0} // Tidak ada jarak antar slide
+                    slidesPerView={1} // Tampilkan satu card per view
+                    pagination={{ clickable: true }} // Mengaktifkan pagination yang bisa diklik
+                    navigation // Menambahkan tombol navigasi
+                    style={{ width: '100%', height: '100%' }} // Memastikan card mengisi area
+                    allowTouchMove={true} // Mengizinkan gerakan sentuh
+                    centeredSlides={false} // Pastikan tidak ada slide yang terlihat saat berpindah
+                    noSwiping={false} // Mengizinkan swipe
+                    onSlideChange={(swiper) => console.log('Slide index changed to: ', swiper.activeIndex)} // Untuk debugging jika perlu
+                >
+                    {designs.map((design) => (
+                        <SwiperSlide key={design.id} style={{ display: 'flex', justifyContent: 'center', height: '100vh' }}>
                             <DesignCard design={design} />
-                        </div>
+                        </SwiperSlide>
                     ))}
-                </div>
+                </Swiper>
             </div>
 
+            {/* Desktop Section */}
             <div className="hidden md:flex justify-start md:justify-center items-center overflow-x-auto pb-4 mt-[200px] scrollbar scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
                 <div className="flex space-x-6">
                     {designs.map((design, index) => (

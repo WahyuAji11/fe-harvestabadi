@@ -67,7 +67,7 @@ const BlogSection = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10" data-aos="zoom-in-up">Our Blog</h1>
             <div className="space-y-6 w-full z-10">
                 {posts.length > 0 ? (
-                    posts.map((post, index) => (
+                    posts.slice(0, 3).map((post, index) => (
                         <div
                             key={post.slug}
                             className="opacity-100 translate-x-0 transition-all duration-700 ease-in-out"
@@ -88,6 +88,7 @@ const BlogSection = () => {
             <div className={`bg-[#97DAFF] rounded-full h-[400px] w-[400px] sm:h-[600px] sm:w-[600px] lg:h-[600px] lg:w-[600px] absolute bottom-[50px] sm:bottom-[-80px] lg:bottom-[-300px] right-[-180px] sm:right-[-200px] lg:right-[-180px] z-0 ${checked ? 'bg-gray-700' : ''}`}></div>
         </section>
     );
+
 };
 
 // Styles for the loader
