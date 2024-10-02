@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { DarkModeContext } from '../component/DarkModeContext';
 
 function ContactSection() {
+  const { checked } = useContext(DarkModeContext);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -17,15 +19,16 @@ function ContactSection() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { name, email, message } = formData;
-    
-    // URL mailto:
-    const mailtoLink = `mailto:arsayadimas@gmail.com?subject=Contact from ${name}&body=Name: ${name}%0AEmail: ${email}%0AMessage: ${message}`;
+
+    //  URL mailto dengan cc (carbon copy) menyertakan email pengguna
+    const mailtoLink = `mailto:alhafidzw1@gmail.com?subject=Contact from ${name}&body=Name: ${name}%0AEmail: ${email}%0AMessage: ${message}&cc=${email}`;
     
     window.location.href = mailtoLink;
   };
 
   return (
-    <section className="flex items-center justify-center min-h-screen pt-10 bg-[#60b4fc]" id='contact'>
+    <section className={`flex items-center justify-center min-h-screen pt-10 
+      ${checked ? 'bg-gray-800' : 'bg-[#60b4fc]'}`} id='contact'>
       <div className="flex flex-col md:flex-row w-3/4 max-w-6xl overflow-hidden">
         <div className="w-full md:w-2/5 flex justify-center items-center">
           <img
@@ -37,10 +40,12 @@ function ContactSection() {
         <div className="w-full md:w-1/2 p-8">
           <div className="flex justify-between items-center">
             <div>
-              <h1 className="text-xl md:text-2xl font-bold text-white">
+              <h1 className={`text-xl md:text-2xl font-bold 
+                ${checked ? 'text-white' : 'text-white'}`}>
                 Contact Us
               </h1>
-              <p className="text-sm mt-2 text-white">
+              <p className={`text-sm mt-2 
+                ${checked ? 'text-gray-300' : 'text-white'}`}>
                 Fill out the form to send us a message via your email client.
               </p>
             </div>
@@ -53,7 +58,8 @@ function ContactSection() {
                 placeholder="Your name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 bg-white text-black"
+                className={`w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 
+                  ${checked ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white text-black'}`}
               />
               <input
                 type="email"
@@ -61,19 +67,22 @@ function ContactSection() {
                 placeholder="Your email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 bg-white text-black"
+                className={`w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 
+                  ${checked ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white text-black'}`}
               />
               <textarea
                 name="message"
                 placeholder="Your message"
                 value={formData.message}
                 onChange={handleChange}
-                className="w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 bg-white text-black"
+                className={`w-full p-4 border border-gray-300 rounded-xl focus:outline-none focus:border-white mb-8 
+                  ${checked ? 'bg-gray-700 border-gray-600 text-white' : 'bg-white text-black'}`}
                 rows="4"
               ></textarea>
               <button
                 type="submit"
-                className="w-full p-4 text-lg font-bold rounded-xl bg-blue-500 text-white hover:bg-blue-700"
+                className={`w-full p-4 text-lg font-bold rounded-xl 
+                  ${checked ? 'bg-blue-900 text-white' : 'bg-blue-500 text-white'} ${checked ? 'hover:bg-blue-950' : 'hover:bg-blue-700'}`}
               >
                 Submit
               </button>
