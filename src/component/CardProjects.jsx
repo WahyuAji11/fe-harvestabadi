@@ -6,6 +6,15 @@ const CardProjects = ({ project }) => {
     const { checked } = useContext(DarkModeContext);
     const imageUrl = `${API_BASE_URL}storage/images/${project.image}`;
 
+    // Fungsi untuk menghapus tag HTML
+    const stripHtmlTags = (html) => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        return tempDiv.textContent || tempDiv.innerText || '';
+    };
+
+    const cleanedContent = stripHtmlTags(project.content);
+
     return (
         <div className="max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-3">
             <a href={`/project/${project.slug}`} className="block">
@@ -16,9 +25,9 @@ const CardProjects = ({ project }) => {
                         className="absolute inset-0 w-full h-full object-cover rounded-md shadow-lg"
                     />
                 </div>
-                {project.content && (
+                {cleanedContent && (
                     <h3 className={`mt-4 text-lg font-semibold text-center ${checked ? 'text-white' : 'text-gray-800'}`}>
-                        {project.content}
+                        {cleanedContent}
                     </h3>
                 )}
             </a>

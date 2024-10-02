@@ -1,4 +1,3 @@
-/* eslint-disable no-useless-escape */
 import React from 'react';
 
 const DesignCard = ({ design }) => {
@@ -11,7 +10,7 @@ const DesignCard = ({ design }) => {
     const embedUrl = design.link ? getYouTubeEmbedUrl(design.link) : null;
 
     return (
-        <div className="max-w-lg mx-auto mb-3 p-4 border rounded-md shadow-lg">
+        <div className="max-w-lg mx-auto mb-3 p-4 shadow-lg">
             {embedUrl ? (
                 <div className="mt-3 z-10">
                     <iframe
@@ -19,8 +18,8 @@ const DesignCard = ({ design }) => {
                         height="315"
                         src={embedUrl}
                         title="YouTube video player"
-                        frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        className='rounded-md'
                         allowFullScreen
                     ></iframe>
                 </div>

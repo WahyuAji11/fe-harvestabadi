@@ -21,7 +21,7 @@ function ContactSection() {
     const { name, email, message } = formData;
 
     //  URL mailto dengan cc (carbon copy) menyertakan email pengguna
-    const mailtoLink = `mailto:alhafidzw1@gmail.com?subject=Contact from ${name}&body=Name: ${name}%0AEmail: ${email}%0AMessage: ${message}&cc=${email}`;
+    const mailtoLink = `mailto:admin@harvestabadi.com?subject=Contact from ${name}&body=Name: ${name}%0AEmail: ${email}%0AMessage: ${message}&cc=${email}`;
     
     window.location.href = mailtoLink;
   };

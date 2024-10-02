@@ -22,8 +22,8 @@ const SingleBlog = () => {
                 setPost(postResponse);
 
                 if (postResponse.data.image) {
-                const img = new Image();
-                img.src = `${API_BASE_URL}storage/images/${postResponse.image}`;
+                    const img = new Image();
+                    img.src = `${API_BASE_URL}storage/images/${postResponse.data.image}`;
                 }
             } catch (err) {
                 console.log(err);
@@ -35,15 +35,20 @@ const SingleBlog = () => {
         fetchData();
     }, [slug]);
 
+    const stripHtmlTags = (html) => {
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        return doc.body.textContent || "";
+    };
+
     if (!post) {
         return (
             <section className={`z-10 flex flex-col items-center justify-center p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900 text-white' : 'bg-[#60b4fc] text-white'}`} id='article'>
-                <h1 className='z-10 lg:text-8xl text-3xl'>Post not found !</h1>
+                <h1 className='z-10 lg:text-8xl text-3xl'>Post not found!</h1>
                 <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10`} to='/'>
                     <FaArrowCircleLeft />
                 </Link>
             </section>
-        )
+        );
     }
 
     if (loading) {
@@ -54,10 +59,10 @@ const SingleBlog = () => {
             }}>
                 <div style={{
                     ...styles.spinner,
-                    borderColor: checked ? 'FBBF24' : '#60B4FC'
+                    borderColor: checked ? '#FBBF24' : '#60B4FC'
                 }}></div>
             </div>
-        )
+        );
     }
 
     return (
@@ -68,14 +73,15 @@ const SingleBlog = () => {
                     <img
                         src={`${API_BASE_URL}storage/images/${post.image}`}
                         alt={post.title}
-                        className="w-full h-auto object-cover mb-6"
+                        className="w-full h-[calc(100vw*9/16)] object-cover mb-6" // Maintain fixed landscape size
+                        style={{ height: 'calc(100vw * 9 / 16)', maxHeight: '500px' }} // Set max height for landscape
                     />
                     <h1 className="text-black font-bold text-4xl mb-4">{post.title}</h1>
                     <div className="flex items-center mb-4">
                         <span className="text-sm text-gray-500 font-medium">{post.author.name}</span>
                         <span className="text-sm text-gray-500 ml-4">{new Date(post.created_at).toLocaleDateString()}</span>
                     </div>
-                    <p className="text-gray-800 text-base leading-relaxed mb-6">{post.content}</p>
+                    <p className="text-gray-800 text-base leading-relaxed mb-6">{stripHtmlTags(post.content)}</p>
                 </div>
                 <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10`} to='/'>
                     <FaArrowCircleLeft />
@@ -98,7 +104,7 @@ const styles = {
         borderRadius: '50%',
         width: '60px',
         height: '60px',
-        animation:'spin 1s linear infinite'
+        animation: 'spin 1s linear infinite'
     }
 }
 

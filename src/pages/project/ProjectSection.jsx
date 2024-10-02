@@ -36,26 +36,26 @@ const ProjectSection = () => {
 
     // Handle touch start
     const handleTouchStart = (e) => {
-        setStartX(e.touches[0].clientX); // menyimpan posisi awal sentuhan
+        setStartX(e.touches[0].clientX); 
     };
 
     // Handle touch move
     const handleTouchMove = (e) => {
-        if (startX === null) return; // Mengabaikan jika tidak ada posisi awal
+        if (startX === null) return;
 
-        const touchEnd = e.touches[0].clientX; // posisi akhir
-        const touchDiff = startX - touchEnd; // selisih posisi
+        const touchEnd = e.touches[0].clientX;
+        const touchDiff = startX - touchEnd;
 
-        if (touchDiff > 50) { // Geser ke kiri
+        if (touchDiff > 50) { 
             setCurrentCardIndex((prevIndex) =>
                 prevIndex === projects.length - 1 ? 0 : prevIndex + 1
             );
-            setStartX(null); // Reset posisi awal
-        } else if (touchDiff < -50) { // Geser ke kanan
+            setStartX(null); 
+        } else if (touchDiff < -50) { 
             setCurrentCardIndex((prevIndex) =>
                 prevIndex === 0 ? projects.length - 1 : prevIndex - 1
             );
-            setStartX(null); // Reset posisi awal
+            setStartX(null);
         }
     };
 
