@@ -69,15 +69,14 @@ const DesignSection = () => {
                     spaceBetween={0} // Tidak ada jarak antar slide
                     slidesPerView={1} // Tampilkan satu card per view
                     pagination={{ clickable: true }} // Mengaktifkan pagination yang bisa diklik
-                    navigation // Menambahkan tombol navigasi
-                    style={{ width: '100%', height: '100%' }} // Memastikan card mengisi area
+                    style={{ width: '100%', height: 'auto' }} // Mengubah height menjadi auto
                     allowTouchMove={true} // Mengizinkan gerakan sentuh
                     centeredSlides={false} // Pastikan tidak ada slide yang terlihat saat berpindah
                     noSwiping={false} // Mengizinkan swipe
                     onSlideChange={(swiper) => console.log('Slide index changed to: ', swiper.activeIndex)} // Untuk debugging jika perlu
                 >
                     {designs.map((design) => (
-                        <SwiperSlide key={design.id} style={{ display: 'flex', justifyContent: 'center', height: '100vh' }}>
+                        <SwiperSlide key={design.id} style={{ display: 'flex', justifyContent: 'center', height: 'auto' }}>
                             <DesignCard design={design} />
                         </SwiperSlide>
                     ))}
