@@ -7,6 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper-bundle.css";
 import { fetchAllService } from "../../utils/servicesService";
 import { STORAGE_URL } from "../../config/config";
+import { FaRegSadCry } from 'react-icons/fa'; // Import the icon
 
 const ServiceSection = () => {
     const { checked } = useContext(DarkModeContext);
@@ -50,11 +51,34 @@ const ServiceSection = () => {
     }, [services]);
 
     if (loading) {
-        return <div>Loading...</div>;
+        return (
+            <div style={{
+                ...styles.loaderContainer,
+                backgroundColor: checked ? '#1F2938' : '#60b4fc'
+            }}>
+                <div style={{
+                    ...styles.spinner,
+                    borderTopColor: checked ? '#FBBF24' : '#FBBF24'
+                }}></div>
+            </div>
+        );
     }
 
     if (error) {
-        return <div>{error}</div>;
+        return (
+            <div style={{
+                ...styles.errorContainer,
+                backgroundColor: checked ? '#1F2938' : '#60b4fc'
+            }}>
+                <p style={{
+                    color: checked ? '#FBBF24' : '#FFFFFF',
+                    fontSize: '24px',
+                }}>
+                    {error}
+                </p>
+                <FaRegSadCry size={48} style={{ marginTop: '10px', color: checked ? '#FBBF24' : '#FFFFFF' }} />
+            </div>
+        );
     }
 
     return (
@@ -95,7 +119,35 @@ const ServiceSection = () => {
                 </Swiper>
             </div>
         </section>
+        
     );
 };
+
+// Styles for the loader and error message
+const styles = {
+    loaderContainer: {
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+    },
+    spinner: {
+        border: '8px solid #f3f3f3',
+        borderTop: '8px solid transparent',
+        borderRadius: '50%',
+        width: '60px',
+        height: '60px',
+        animation: 'spin 1s linear infinite',
+    },
+    errorContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        padding: '20px',
+        color: 'white',
+    },
+}
 
 export default ServiceSection;

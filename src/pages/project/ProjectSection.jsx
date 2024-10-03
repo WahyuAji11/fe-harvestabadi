@@ -5,6 +5,7 @@ import { fetchAllProject } from '../../utils/projectService';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { DarkModeContext } from '../../component/DarkModeContext';
+import { FaRegSadCry } from 'react-icons/fa';
 
 const ProjectSection = () => {
     const { checked } = useContext(DarkModeContext);
@@ -72,7 +73,20 @@ const ProjectSection = () => {
     }
 
     if (error) {
-        return <div className="text-center text-red-500">{error}</div>;
+        return (
+            <div style={{
+                ...styles.errorContainer,
+                backgroundColor: checked ? '#1F2938' : '#60b4fc'
+            }}>
+                <p style={{
+                    color: checked ? '#FBBF24' : '#FFFFFF',
+                    fontSize: '24px',
+                }}>
+                    {error}
+                </p>
+                <FaRegSadCry size={48} style={{ marginTop: '10px', color: checked ? '#FBBF24' : '#FFFFFF' }} />
+            </div>
+        );
     }
 
     return (
@@ -150,6 +164,15 @@ const styles = {
         width: '60px',
         height: '60px',
         animation: 'spin 1s linear infinite',
+    },
+    errorContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        padding: '20px',
+        color: 'white',
     },
 };
 

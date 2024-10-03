@@ -3,7 +3,7 @@ import BlogCard from '../../component/BlogCard';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../component/DarkModeContext';
 import { fetchAllPost } from '../../utils/postServices';
-import { FaArrowCircleLeft } from 'react-icons/fa';
+import { FaArrowCircleLeft, FaRegSadCry } from 'react-icons/fa';
 
 const BlogSection = () => {
     const { checked } = useContext(DarkModeContext);
@@ -55,12 +55,18 @@ const BlogSection = () => {
 
     if (error) {
         return (
-            <section className={`z-10 flex flex-col items-center justify-center p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900 text-white' : 'bg-[#60b4fc] text-white'}`} id='article'>
-                <h1 className='z-10 lg:text-8xl text-3xl'>Post not found!</h1>
-                <Link className={`hover:text-yellow-400 text-5xl mt-10 mx-auto mb-10`} to='/'>
-                    <FaArrowCircleLeft />
-                </Link>
-            </section>
+            <div style={{
+                ...styles.errorContainer,
+                backgroundColor: checked ? '#1F2938' : '#60b4fc'
+            }}>
+                <p style={{
+                    color: checked ? '#FBBF24' : '#FFFFFF',
+                    fontSize: '24px',
+                }}>
+                    {error}
+                </p>
+                <FaRegSadCry size={48} style={{ marginTop: '10px', color: checked ? '#FBBF24' : '#FFFFFF' }} />
+            </div>
         );
     }
 
@@ -71,7 +77,6 @@ const BlogSection = () => {
             <div className="space-y-6 w-full z-10">
                 {posts.length > 0 ? (
                     posts.slice(0, 3).map((post, index) => {
-                        // Use a direct conditional check for desktop layout
                         const isRightAligned = isDesktop ? index % 2 === 0 : true; 
 
                         return (
@@ -113,7 +118,16 @@ const styles = {
         width: '60px',
         height: '60px',
         animation: 'spin 1s linear infinite'
-    }
+    },
+    errorContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+        padding: '20px',
+        color: 'white',
+    },
 }
 
 export default BlogSection;
