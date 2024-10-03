@@ -13,10 +13,9 @@ import Blog from './pages/blog/Blog';
 import OurProjects from './pages/project/Projects';
 import FloatingWhatsApp from './component/FloatingWhatsapp';
 import { DarkModeProvider } from './component/DarkModeContext';
-import SingleBlog from './pages/blog/SIngleBlog';
-import DetailServices from './pages/services/DetailService';
+import SingleBlog from './pages/blog/SingleBlog';
 import SingleProject from './pages/project/SingleProject';
-
+import SingleService from './pages/services/SingleService';
 
 const App = () => {
   return (
@@ -35,7 +34,7 @@ const App = () => {
                 <ContactSection />
               </>
             } />
-            <Route path="/detail-service" element={<DetailServices />} />
+            <Route path="/service/:slug" element={<SingleService />} />
             <Route path="/our-blog" element={<Blog />} />
             <Route path="/our-project" element={<OurProjects />} />
             <Route path="/design-inspiration" element={<DesignInspiration />} />

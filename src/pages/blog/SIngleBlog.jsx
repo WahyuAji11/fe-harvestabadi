@@ -2,7 +2,8 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { DarkModeContext } from '../../component/DarkModeContext';
-import { fetchPostBySlug, API_BASE_URL } from '../../utils/postServices';
+import { fetchPostBySlug } from '../../utils/postServices';
+import { STORAGE_URL } from '../../config/config';
 
 const SingleBlog = () => {
     const { slug } = useParams();
@@ -23,7 +24,7 @@ const SingleBlog = () => {
 
                 if (postResponse.data.image) {
                     const img = new Image();
-                    img.src = `${API_BASE_URL}storage/images/${postResponse.data.image}`;
+                    img.src = `${STORAGE_URL}${postResponse.data.image}`;
                 }
             } catch (err) {
                 console.log(err);
@@ -71,7 +72,7 @@ const SingleBlog = () => {
             <section className={`z-10 flex flex-col items-center justify-center p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900 text-white' : 'bg-[#60b4fc] text-white'}`} id='article'>
                 <div className={`flex flex-col bg-white shadow-md rounded-lg overflow-hidden w-full max-w-5xl mx-auto p-6 z-10 mt-20`}>
                     <img
-                        src={`${API_BASE_URL}storage/images/${post.image}`}
+                        src={`${STORAGE_URL}${post.image}`}
                         alt={post.title}
                         className="w-full h-[calc(100vw*9/16)] object-cover mb-6" // Maintain fixed landscape size
                         style={{ height: 'calc(100vw * 9 / 16)', maxHeight: '500px' }} // Set max height for landscape

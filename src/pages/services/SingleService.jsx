@@ -2,13 +2,13 @@ import React, { useContext, useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { FaArrowCircleLeft } from 'react-icons/fa';
 import { DarkModeContext } from '../../component/DarkModeContext';
-import { fetchProjectBySlug } from '../../utils/projectService';
+import { fetchServiceBySlug } from '../../utils/servicesService';
 import { STORAGE_URL } from '../../config/config';
 
-const SingleProject = () => {
+const SingleService = () => {
     const { slug } = useParams();
     const { checked } = useContext(DarkModeContext);
-    const [data, setData] = useState([]);
+    const [data, setData] = useState({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -19,8 +19,9 @@ const SingleProject = () => {
             }
 
             try {
-                const fetchedData = await fetchProjectBySlug(slug);
+                const fetchedData = await fetchServiceBySlug(slug);
                 setData(fetchedData);
+                console.log(fetchedData)
             } catch (err) {
                 console.log(err);
             } finally {
@@ -71,7 +72,6 @@ const SingleProject = () => {
     );
 };
 
-// Styles for the loader
 const styles = {
     loaderContainer: {
         display: 'flex',
@@ -89,4 +89,4 @@ const styles = {
     }
 }
 
-export default SingleProject;
+export default SingleService;

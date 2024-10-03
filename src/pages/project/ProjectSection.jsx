@@ -34,24 +34,22 @@ const ProjectSection = () => {
         AOS.init({ duration: 1000 });
     }, []);
 
-    // Handle touch start
     const handleTouchStart = (e) => {
-        setStartX(e.touches[0].clientX); 
+        setStartX(e.touches[0].clientX);
     };
 
-    // Handle touch move
     const handleTouchMove = (e) => {
         if (startX === null) return;
 
         const touchEnd = e.touches[0].clientX;
         const touchDiff = startX - touchEnd;
 
-        if (touchDiff > 50) { 
+        if (touchDiff > 50) {
             setCurrentCardIndex((prevIndex) =>
                 prevIndex === projects.length - 1 ? 0 : prevIndex + 1
             );
-            setStartX(null); 
-        } else if (touchDiff < -50) { 
+            setStartX(null);
+        } else if (touchDiff < -50) {
             setCurrentCardIndex((prevIndex) =>
                 prevIndex === 0 ? projects.length - 1 : prevIndex - 1
             );
@@ -78,8 +76,8 @@ const ProjectSection = () => {
     }
 
     return (
-        <section className={`flex flex-col text-white p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full h-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='project'>
-            <div className='flex flex-col items-start justify-start absolute left-4 mt-12 md:left-16 lg:left-[300px]' data-aos="fade-right">
+        <section className={`md:px-12 px-5 flex flex-col text-white sm:px-8 sm:py-12 min-h-screen w-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='project'>
+            <div className='flex flex-col items-start justify-start left-4 mt-12 md:left-16' data-aos="fade-right">
                 <h1 className={`text-3xl mt-9 sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 ${checked ? 'text-white' : 'text-black'}`}>
                     Our <br /> Projects
                 </h1>
@@ -88,8 +86,8 @@ const ProjectSection = () => {
                 </h1>
             </div>
 
-            {/* Mobile version with swipe functionality */}
-            <div className="flex md:hidden justify-center items-center mt-[200px] sm:mt-[250px] md:mt-[300px] relative"
+            {/* Mobile Slider */}
+            <div className="flex md:hidden justify-center items-center relative mt-10"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
             >
@@ -101,7 +99,7 @@ const ProjectSection = () => {
                         }}
                     >
                         {projects.map((data, index) => (
-                            <div key={data.slug} className="min-w-full flex justify-center">
+                            <div key={data.slug} className="min-w-full flex items-center justify-center">
                                 <CardProjects project={data} />
                             </div>
                         ))}
@@ -109,13 +107,13 @@ const ProjectSection = () => {
                 )}
             </div>
 
-            {/* Desktop version */}
-            <div className="hidden md:flex justify-start md:justify-center items-center overflow-x-auto pb-4 mt-[200px] sm:mt-[250px] md:mt-[300px] scrollbar scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
-                <div className="flex">
+            {/* Desktop Projects */}
+            <div className="hidden md:flex md:mt-24 justify-center items-center overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+                <div className="flex items-center justify-between gap-6 md:gap-10">
                     {projects.map((data, index) => (
                         <div
                             key={data.slug}
-                            className="min-w-[250px] sm:min-w-[300px] md:min-w-[350px] opacity-0 translate-x-[-20px] transition-all duration-700 ease-in-out mr-11"
+                            className="flex justify-center items-center min-w-[250px] sm:min-w-[300px] md:min-w-[350px] opacity-0 translate-x-[-20px] transition-all duration-700 ease-in-out"
                             data-aos="fade-up"
                             data-aos-delay={index * 200}
                         >
@@ -125,6 +123,7 @@ const ProjectSection = () => {
                 </div>
             </div>
 
+            {/* Read More Link */}
             <Link
                 className={`text-xl md:text-2xl lg:text-3xl font-bold mt-8 mb-6 text-center hover:text-yellow-400 ${checked ? 'text-white' : 'text-black'}`}
                 to='/our-project'

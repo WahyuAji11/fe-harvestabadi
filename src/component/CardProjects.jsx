@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
 import { DarkModeContext } from './DarkModeContext';
-import { API_BASE_URL } from '../utils/projectService';
+import { STORAGE_URL } from '../config/config';
 
 const CardProjects = ({ project }) => {
     const { checked } = useContext(DarkModeContext);
-    const imageUrl = `${API_BASE_URL}storage/images/${project.image}`;
+    const imageUrl = `${STORAGE_URL}${project.image}`;
 
-    // Fungsi untuk menghapus tag HTML
     const stripHtmlTags = (html) => {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
@@ -16,13 +15,13 @@ const CardProjects = ({ project }) => {
     const cleanedContent = stripHtmlTags(project.content);
 
     return (
-        <div className="max-w-xs md:max-w-sm lg:max-w-md mx-auto mb-3">
+        <div className="max-w-xs md:max-w-sm lg:max-w-md">
             <a href={`/project/${project.slug}`} className="block">
-                <div className="relative min-h-[600px] min-w-[350px]">
+                <div className="relative h-[600px] min-w-full md:min-w-[350px]">
                     <img
                         src={imageUrl}
                         alt={project.slug}
-                        className="absolute inset-0 w-full h-full object-cover rounded-md shadow-lg"
+                        className="inset-0 w-full h-full object-cover rounded-md shadow-lg"
                     />
                 </div>
                 {cleanedContent && (

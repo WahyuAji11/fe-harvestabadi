@@ -63,16 +63,15 @@ const DesignSection = () => {
                 Design Inspiration
             </h2>
 
-            {/* Mobile Independent Swipe Section with Swiper */}
             <div className="md:hidden mt-[200px]">
                 <Swiper
                     spaceBetween={0}
                     slidesPerView={1}
-                    pagination={{ clickable: true }} 
+                    pagination={{ clickable: true }}
                     style={{ width: '100%', height: 'auto' }}
                     allowTouchMove={true}
                     centeredSlides={false}
-                    noSwiping={false} 
+                    noSwiping={false}
                     onSlideChange={(swiper) => console.log('Slide index changed to: ', swiper.activeIndex)}
                 >
                     {designs.map((design) => (
@@ -83,8 +82,7 @@ const DesignSection = () => {
                 </Swiper>
             </div>
 
-            {/* Desktop Section */}
-            <div className="hidden md:flex justify-start md:justify-center items-center overflow-x-auto pb-4 mt-[200px] scrollbar scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
+            <div className="hidden md:flex justify-start md:justify-center items-center overflow-x-auto pb-4 mt-[200px] scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
                 <div className="flex space-x-6">
                     {designs.map((design, index) => (
                         <div

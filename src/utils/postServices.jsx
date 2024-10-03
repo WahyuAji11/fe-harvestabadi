@@ -1,13 +1,9 @@
 import axios from 'axios';
-
-const API_BASE_URL = 'https://api.harvestabadi.com/';
-//const API_BASE_URL = 'http://localhost:8000/';
-
-export { API_BASE_URL };
+import { API_URL } from '../config/config';
 
 export const fetchPostBySlug = async (slug) => {
     try {
-        const response = await axios.get(`${API_BASE_URL}api/v1/public/artikels/${slug}`);
+        const response = await axios.get(`${API_URL}public/artikels/${slug}`);
         return response.data.data;
     } catch (error) {
         const errorMessage = error.response ? error.response.data.message : error.message;
@@ -18,7 +14,7 @@ export const fetchPostBySlug = async (slug) => {
 
 export const fetchAllPost = async () => {
     try {
-        const response = await axios.get(`${API_BASE_URL}api/v1/public/artikels/all`);
+        const response = await axios.get(`${API_URL}public/artikels/all`);
         return response.data.data;
     } catch (error) {
         const errorMessage = error.response ? error.response.data.message : error.message;

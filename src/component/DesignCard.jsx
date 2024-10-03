@@ -2,7 +2,7 @@ import React from 'react';
 
 const DesignCard = ({ design }) => {
     const getYouTubeEmbedUrl = (url) => {
-        const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/;
+        const regex = /(?:youtube\.com\/(?:[^\\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\\/\s]{11})/;
         const match = url.match(regex);
         return match ? `https://www.youtube.com/embed/${match[1]}` : null;
     };

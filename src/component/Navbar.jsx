@@ -7,10 +7,10 @@ import { DarkModeContext } from "./DarkModeContext";
 
 const navLinks = [
     { title: "Home", id: "home", path: "/" },
-    { title: "Services", id: "services", path: "/" },
-    { title: "Projects", id: "project", path: "/" },
-    { title: "Blog", id: "blog", path: "/" },
-    { title: "Contact Us", id: "contact", path: "/" },
+    { title: "Services", id: "services", path: "/services" },
+    { title: "Projects", id: "projects", path: "/projects" },
+    { title: "Blog", id: "blog", path: "/blog" },
+    { title: "Contact Us", id: "contact", path: "/contact" },
 ];
 
 const Navbar = () => {
@@ -39,16 +39,12 @@ const Navbar = () => {
         }
     };
 
-    const handleScroll = () => {
-        const offset = window.scrollY;
-        if (offset > 50) {
-            setBgColor(checked ? "bg-gray-800" : "bg-[#60b4fc]");
-        } else {
-            setBgColor("transparent");
-        }
-    };
-
     useEffect(() => {
+        const handleScroll = () => {
+            const offset = window.scrollY;
+            setBgColor(offset > 50 ? (checked ? "bg-gray-800" : "bg-[#60b4fc]") : "transparent");
+        };
+
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -56,7 +52,7 @@ const Navbar = () => {
     }, [checked]);
 
     return (
-        <nav className={`fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${bgColor} ${checked ? "bg-gray-800" : ""}`}>
+        <nav className={`fixed top-0 left-0 right-0 z-20 transition-all duration-300 ${bgColor}`}>
             <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
                 <Link to="/" className="text-2xl md:text-5xl text-white">
                     HARVEST<b>ABADI</b>
@@ -73,8 +69,8 @@ const Navbar = () => {
                     <ul className="flex p-4 md:p-0 md:flex-row md:space-x-8">
                         {navLinks.map((link, index) => (
                             <li key={index}>
-                                <button 
-                                    onClick={() => handleNavClick(link)} 
+                                <button
+                                    onClick={() => handleNavClick(link)}
                                     className="text-white hover:text-yellow-400 transition-colors duration-300"
                                 >
                                     {link.title}
@@ -98,10 +94,10 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-            <MenuOverlay 
-                links={navLinks} 
-                navbarOpen={navbarOpen} 
-                onClose={() => setNavbarOpen(false)} 
+            <MenuOverlay
+                links={navLinks}
+                navbarOpen={navbarOpen}
+                onClose={() => setNavbarOpen(false)}
                 handleNavClick={handleNavClick}
             />
         </nav>

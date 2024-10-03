@@ -1,15 +1,14 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from './DarkModeContext';
-import { API_BASE_URL } from '../utils/postServices';
+import { STORAGE_URL } from '../config/config';
 import moment from 'moment';
 
 const BlogCard = ({ post }) => {
     const { checked } = useContext(DarkModeContext);
-    const imageUrl = `${API_BASE_URL}storage/images/${post.image}`;
+    const imageUrl = `${STORAGE_URL}${post.image}`;
     const formattedDate = moment(post.created_at).format('MMM, DD YYYY');
 
-    // Function to remove HTML tags
     const stripHtmlTags = (html) => {
         const tempDiv = document.createElement('div');
         tempDiv.innerHTML = html;
