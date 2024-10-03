@@ -76,7 +76,7 @@ const ProjectSection = () => {
     }
 
     return (
-        <section className={`md:px-12 px-5 flex flex-col text-white sm:px-8 sm:py-12 min-h-screen w-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='project'>
+        <section className={`md:px-12 px-5 flex flex-col text-white sm:px-8 sm:py-12 min-h-screen w-full ${checked ? 'bg-gray-800' : 'bg-[#b8e4fc]'}`} id='projects'>
             <div className='flex flex-col items-start justify-start left-4 mt-12 md:left-16' data-aos="fade-right">
                 <h1 className={`text-3xl mt-9 sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-2 ${checked ? 'text-white' : 'text-black'}`}>
                     Our <br /> Projects

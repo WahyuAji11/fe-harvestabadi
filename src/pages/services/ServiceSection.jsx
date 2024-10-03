@@ -10,7 +10,6 @@ import { STORAGE_URL } from "../../config/config";
 
 const ServiceSection = () => {
     const { checked } = useContext(DarkModeContext);
-
     const [services, setServices] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -39,11 +38,7 @@ const ServiceSection = () => {
 
     useEffect(() => {
         const updateSlidesPerView = () => {
-            if (window.innerWidth >= 768) {
-                setSlidesPerView(3);
-            } else {
-                setSlidesPerView(1);
-            }
+            setSlidesPerView(window.innerWidth >= 768 ? 3 : 1);
         };
 
         updateSlidesPerView();
@@ -74,7 +69,7 @@ const ServiceSection = () => {
             }
             ></div>
             <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10 opacity-0"
+                className="text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10"
                 data-aos="fade-right"
                 data-aos-duration="500"
             >
@@ -85,7 +80,7 @@ const ServiceSection = () => {
                 <Swiper spaceBetween={0} slidesPerView={slidesPerView} pagination={{ clickable: true }}>
                     {services.map((service, index) => (
                         <SwiperSlide key={index}>
-                            <div className="flex justify-center gap-5">
+                            <div className="flex justify-center gap-5" data-aos="fade-up" data-aos-duration="500">
                                 <div className="w-full max-w-[350px] mx-auto">
                                     <Card
                                         imageSrc={`${STORAGE_URL}${service.image}`}
