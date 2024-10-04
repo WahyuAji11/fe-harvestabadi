@@ -10,7 +10,6 @@ const FloatingWhatsApp = () => {
         const getWhatsAppNumber = async () => {
             try {
                 const response = await axios.get(`${API_URL}setting/whatsapp-number`);
-                console.log(response.data.data)
                 setWhatsAppNumber(response.data.data.whatsAppNumber);
             } catch (error) {
                 console.error('Failed to fetch WhatsApp number:', error);

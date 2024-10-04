@@ -3,7 +3,7 @@ import BlogCard from '../../component/BlogCard';
 import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../component/DarkModeContext';
 import { fetchAllPost } from '../../utils/postServices';
-import { FaArrowCircleLeft, FaRegSadCry } from 'react-icons/fa';
+import { FaRegSadCry } from 'react-icons/fa';
 
 const BlogSection = () => {
     const { checked } = useContext(DarkModeContext);
@@ -28,7 +28,6 @@ const BlogSection = () => {
         fetchPosts();
     }, []);
 
-    // Function to truncate content
     const truncateContent = (content, length) => {
         if (content.length > length) {
             return content.substring(0, length) + '...';
@@ -36,7 +35,6 @@ const BlogSection = () => {
         return content;
     };
 
-    // Check if the viewport is wider than 768px (desktop view)
     const isDesktop = window.innerWidth > 768;
 
     if (loading) {
@@ -77,7 +75,7 @@ const BlogSection = () => {
             <div className="space-y-6 w-full z-10">
                 {posts.length > 0 ? (
                     posts.slice(0, 3).map((post, index) => {
-                        const isRightAligned = isDesktop ? index % 2 === 0 : true; 
+                        const isRightAligned = isDesktop ? index % 2 === 0 : true;
 
                         return (
                             <div

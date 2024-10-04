@@ -100,7 +100,6 @@ const ProjectSection = () => {
                 </h1>
             </div>
 
-            {/* Mobile Slider */}
             <div className="flex md:hidden justify-center items-center relative mt-10"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
