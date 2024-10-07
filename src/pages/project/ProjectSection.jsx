@@ -120,7 +120,6 @@ const ProjectSection = () => {
                 )}
             </div>
 
-            {/* Desktop Projects */}
             <div className="hidden md:flex md:mt-24 justify-center items-center overflow-x-auto pb-4 scrollbar-thin scrollbar-thumb-gray-900 scrollbar-track-gray-100">
                 <div className="flex items-center justify-between gap-6 md:gap-10">
                     {projects.map((data, index) => (
