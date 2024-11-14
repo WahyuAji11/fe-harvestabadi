@@ -4,11 +4,14 @@ import { FaArrowCircleLeft } from 'react-icons/fa';
 import { DarkModeContext } from '../../component/DarkModeContext';
 import { fetchServiceBySlug } from '../../utils/servicesService';
 import { STORAGE_URL } from '../../config/config';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
 
 const SingleService = () => {
     const { slug } = useParams();
     const { checked } = useContext(DarkModeContext);
     const [data, setData] = useState({});
+    const [images, setImages] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -21,7 +24,8 @@ const SingleService = () => {
             try {
                 const fetchedData = await fetchServiceBySlug(slug);
                 setData(fetchedData);
-                console.log(fetchedData)
+                setImages(fetchedData.images || []);
+                console.log(fetchedData);
             } catch (err) {
                 console.log(err);
             } finally {
@@ -53,15 +57,33 @@ const SingleService = () => {
 
     return (
         <section className={`z-10 flex flex-col items-center justify-center p-6 sm:px-8 sm:py-12 md:p-2 min-h-screen w-full ${checked ? 'bg-gray-900 text-white' : 'bg-[#60b4fc] text-white'}`} id='article'>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mt-20 mb-8 text-center z-10">{data.title}</h1>
-            <div className="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-3xl mx-auto z-10">
+            <div className="flex flex-col bg-white shadow-lg rounded-lg overflow-hidden w-full max-w-3xl mx-auto z-10 mt-32">
                 <img src={`${STORAGE_URL}${data.image}`} alt={data.slug} className="w-full h-[calc(100vw/19*6)] object-cover" />
                 <div className="p-6">
-                    <p className="text-gray-800 text-base mb-4">{stripHtmlTags(data.content)}</p>
-                    <div className="flex items-center justify-between mt-4">
-                        <div className="flex items-center">
-                            <span className="text-sm text-gray-500">{data.created_at}</span>
-                        </div>
+                    <Swiper
+                        spaceBetween={10}
+                        slidesPerView={1}
+                        loop={true}
+                        autoplay={{ delay: 3000 }}
+                    >
+                        {images.map((image, index) => (
+                            <SwiperSlide key={index}>
+                                <img
+                                    src={`${STORAGE_URL}${image.image}`}
+                                    alt={`Slide ${index}`}
+                                    className="w-full object-cover rounded-md"
+                                />
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                    <div className="flex justify-center mt-4">
+                        <span className="text-sm text-gray-500 italic">
+                            Swipe to view more images
+                        </span>
+                    </div>
+                    <div className="text-gray-800 text-xl font-bold mt-5">{data.title}</div>
+                    <div className="flex items-center text-gray-800 text-base mb-4">
+                        <p>{stripHtmlTags(data.content)}</p>
                     </div>
                 </div>
             </div>
