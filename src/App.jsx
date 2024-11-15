@@ -16,11 +16,13 @@ import { DarkModeProvider } from './component/DarkModeContext';
 import SingleBlog from './pages/blog/SingleBlog';
 import SingleProject from './pages/project/SingleProject';
 import SingleService from './pages/services/SingleService';
+import ScrollToTop from './component/ScrollToTop';
 
 const App = () => {
   return (
     <DarkModeProvider>
       <Router>
+        <ScrollToTop />
         <Navbar />
         <div>
           <Routes>
@@ -38,8 +40,8 @@ const App = () => {
             <Route path="/our-blog" element={<Blog />} />
             <Route path="/our-project" element={<OurProjects />} />
             <Route path="/design-inspiration" element={<DesignInspiration />} />
-            <Route path="/blog/:slug" element={<SingleBlog/>} />
-            <Route path="/project/:slug" element={<SingleProject/>} />
+            <Route path="/blog/:slug" element={<SingleBlog />} />
+            <Route path="/project/:slug" element={<SingleProject />} />
           </Routes>
         </div>
         <FloatingWhatsApp />

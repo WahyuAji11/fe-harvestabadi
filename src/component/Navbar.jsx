@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Bars3Icon } from "@heroicons/react/24/solid";
 import Switch from "react-switch";
 import MenuOverlay from "./MenuOverlay";
@@ -17,7 +17,6 @@ const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
     const [bgColor, setBgColor] = useState("transparent");
     const { checked, toggleDarkMode } = useContext(DarkModeContext);
-    const location = useLocation();
 
     const handleToggle = (checked) => {
         toggleDarkMode(checked);
@@ -25,17 +24,12 @@ const Navbar = () => {
 
     const handleScrollToSection = (id) => {
         const section = document.getElementById(id);
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
+        if(section) {
+            window.scrollTo({
+                top: section.offsetTop - 100,
+                behavior: "smooth",
+            });
             setNavbarOpen(false);
-        }
-    };
-
-    const handleNavClick = (link) => {
-        if (location.pathname === "/") {
-            handleScrollToSection(link.id);
-        } else {
-            window.location.href = link.path;
         }
     };
 
@@ -70,7 +64,7 @@ const Navbar = () => {
                         {navLinks.map((link, index) => (
                             <li key={index}>
                                 <button
-                                    onClick={() => handleNavClick(link)}
+                                    onClick={() => handleScrollToSection(link.id)}
                                     className="text-white hover:text-yellow-400 transition-colors duration-300"
                                 >
                                     {link.title}
@@ -98,7 +92,7 @@ const Navbar = () => {
                 links={navLinks}
                 navbarOpen={navbarOpen}
                 onClose={() => setNavbarOpen(false)}
-                handleNavClick={handleNavClick}
+                handleScrollToSection={handleScrollToSection}
             />
         </nav>
     );
